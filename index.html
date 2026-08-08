@@ -1,0 +1,1140 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="仕女小聚｜ESG 文化美學系列 - 預約一場真誠與優雅的交流，限額 8 名，歡迎閨蜜兩人同行報名">
+<title>仕女小聚｜ESG 文化美學系列</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;600;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F4EDE1;
+    --paper-deep:#EAE0CC;
+    --ink:#3B2E24;
+    --ink-soft:#6B5A48;
+    --wine:#7B4B45;
+    --wine-deep:#5C3733;
+    --gold:#B08D57;
+    --line:#C9B79A;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"Noto Serif TC", serif;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+
+  body::before{
+    content:"";
+    position:fixed;inset:0;
+    background-image:
+      radial-gradient(circle at 20% 10%, rgba(176,141,87,0.06), transparent 40%),
+      radial-gradient(circle at 80% 90%, rgba(123,75,69,0.07), transparent 45%);
+    pointer-events:none;
+    z-index:0;
+  }
+
+  .wrap{max-width:640px;margin:0 auto;position:relative;z-index:1;}
+
+  /* TOP NAV BAR */
+  .top-nav {
+    position: sticky;
+    top: 0;
+    background: rgba(244, 237, 225, 0.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+    z-index: 100;
+    padding: 10px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 2px 10px rgba(59,46,36,0.05);
+  }
+  .nav-brand {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--wine-deep);
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .nav-menu::-webkit-scrollbar {
+    display: none;
+  }
+  .nav-item {
+    font-size: 13px;
+    color: var(--ink);
+    text-decoration: none;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 5px 10px;
+    border-radius: 999px;
+    background: var(--paper-deep);
+    border: 1px solid var(--line);
+    transition: all 0.2s ease;
+    cursor: pointer;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .nav-item:hover, .nav-item:active {
+    background: var(--wine);
+    color: var(--paper);
+    border-color: var(--wine);
+  }
+  .cart-badge {
+    background: var(--wine-deep);
+    color: #fff;
+    font-size: 11px;
+    padding: 1px 6px;
+    border-radius: 999px;
+    font-weight: bold;
+  }
+
+  .hero{
+    position:relative;
+    padding:0;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+  }
+  .banner-img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+  }
+
+  .divider{
+    display:flex;align-items:center;gap:14px;
+    padding:22px 40px;
+    color:var(--gold);
+  }
+  .divider::before,.divider::after{
+    content:"";flex:1;height:1px;
+    background:linear-gradient(to right, transparent, var(--line), transparent);
+  }
+  .divider span{font-size:12px;letter-spacing:0.3em;}
+
+  .divider.section-title{
+    padding:30px 30px 18px;
+  }
+  .divider.section-title span{
+    font-size:24px;
+    font-weight:700;
+    letter-spacing:0.15em;
+    color:var(--wine-deep);
+    font-family:"Noto Serif TC", serif;
+  }
+
+  .event-posters{
+    padding:0 22px 10px;
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+  }
+  .poster-subtitle{
+    text-align:center;
+    font-size:16px;
+    font-weight:700;
+    color:var(--wine-deep);
+    letter-spacing:0.1em;
+    margin-top:10px;
+    margin-bottom:8px;
+  }
+  .poster-name-row{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    margin-top:20px;
+    flex-wrap: wrap;
+  }
+  .poster-name{
+    text-align:center;
+    font-size:20px;
+    font-weight:700;
+    color:var(--wine-deep);
+    letter-spacing:0.08em;
+  }
+  .badge-points{
+    display:inline-block;
+    background:var(--wine);
+    color:var(--paper);
+    font-size:13px;
+    font-weight:700;
+    letter-spacing:0.05em;
+    padding:5px 14px;
+    border-radius:999px;
+    white-space:nowrap;
+    box-shadow:0 4px 10px rgba(123,75,69,0.2);
+  }
+  .event-posters img{
+    width:100%;
+    display:block;
+    border-radius:4px;
+    box-shadow:0 20px 40px -16px rgba(59,46,36,0.35);
+    margin-bottom:22px;
+  }
+
+  .intro{
+    padding:8px 34px 10px;
+    text-align:center;
+  }
+  .intro .tag{
+    display:inline-block;
+    font-size:13px;
+    letter-spacing:0.25em;
+    color:#8A7A63;
+    border:1px solid var(--line);
+    padding:6px 16px;
+    border-radius:999px;
+    margin-bottom:18px;
+  }
+  .intro .lead{
+    font-size:18px;
+    color:var(--wine-deep);
+    font-weight:700;
+    line-height:1.95;
+    margin-bottom:22px;
+    background: rgba(234, 224, 204, 0.4);
+    padding: 18px 20px;
+    border-radius: 8px;
+    border-left: 3px solid var(--gold);
+    border-right: 3px solid var(--gold);
+    text-align: justify;
+  }
+
+  .planners{
+    text-align:left;
+    background:var(--paper-deep);
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding:22px 22px 6px;
+    margin-bottom:26px;
+  }
+  .planners-title{
+    text-align:center;
+    font-size:14px;
+    letter-spacing:0.3em;
+    color:var(--wine);
+    margin-bottom:18px;
+    font-weight:700;
+  }
+  .planner{
+    padding-bottom:16px;
+    margin-bottom:16px;
+    border-bottom:1px dashed var(--line);
+  }
+  .planner:last-child{
+    border-bottom:none;
+    margin-bottom:0;
+    padding-bottom:2px;
+  }
+  .planner-name{
+    font-size:16px;
+    font-weight:700;
+    color:var(--wine-deep);
+    margin-bottom:8px;
+    letter-spacing:0.03em;
+  }
+  .planner-desc{
+    font-size:13.5px;
+    line-height:1.9;
+    color:var(--ink-soft);
+    text-align:left;
+  }
+
+  .cta{
+    margin:36px 22px 10px;
+    background:var(--wine-deep);
+    color:var(--paper);
+    border-radius:8px;
+    padding:38px 28px;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+  }
+  .cta::before{
+    content:"";
+    position:absolute;
+    inset:8px;
+    border:1px solid rgba(244,237,225,0.25);
+    border-radius:4px;
+    pointer-events:none;
+  }
+  .cta .cta-eyebrow{
+    font-family:"Cormorant Garamond", serif;
+    font-style:italic;
+    font-size:15px;
+    letter-spacing:0.08em;
+    color:#E3C9A5;
+    margin-bottom:10px;
+  }
+  .cta h3{
+    font-size:22px;
+    line-height:1.9;
+    font-weight:700;
+    margin-bottom:22px;
+  }
+  .cta h3 .highlight{
+    color:#E3C9A5;
+  }
+  .cta-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:#F4EDE1;
+    color:var(--wine-deep);
+    font-weight:700;
+    font-size:16px;
+    letter-spacing:0.05em;
+    padding:14px 34px;
+    border-radius:999px;
+    text-decoration:none;
+    box-shadow:0 10px 24px -8px rgba(0,0,0,0.4);
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .cta-btn:active{transform:scale(0.97);}
+
+  .cta .note{
+    margin-top:16px;
+    font-size:12.5px;
+    color:#CBB79A;
+    letter-spacing:0.05em;
+  }
+
+  /* SIGNUP FORM STYLES */
+  .signup{
+    padding:6px 22px 40px;
+  }
+  .signup-card{
+    background:var(--paper-deep);
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:26px 22px;
+  }
+  .signup-section-title{
+    font-size:16px;
+    font-weight:700;
+    color:var(--wine-deep);
+    letter-spacing:0.05em;
+    margin-bottom:16px;
+    padding-bottom:8px;
+    border-bottom:1px dashed var(--line);
+  }
+  .event-summary-box{
+    background:#FFF;
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding:16px;
+    margin-bottom:20px;
+    font-size:14px;
+    line-height:1.8;
+  }
+  .event-summary-box b{
+    color:var(--wine-deep);
+  }
+  .field{
+    margin-bottom:16px;
+  }
+  .field label{
+    display:block;
+    font-size:13.5px;
+    color:var(--ink);
+    margin-bottom:6px;
+    font-weight:600;
+  }
+  .field input,
+  .field select,
+  .field textarea{
+    width:100%;
+    font-family:"Noto Serif TC", serif;
+    font-size:14.5px;
+    color:var(--ink);
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:5px;
+    padding:10px 12px;
+    outline:none;
+  }
+  .field input:focus,
+  .field select:focus,
+  .field textarea:focus{
+    border-color:var(--wine);
+  }
+  .radio-group{
+    display:flex;
+    gap:16px;
+    margin-top:6px;
+    flex-wrap:wrap;
+  }
+  .radio-group label{
+    font-weight:normal;
+    font-size:14px;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    gap:6px;
+  }
+  .field-hint{
+    font-size:12px;
+    color:var(--wine);
+    margin-top:4px;
+  }
+  .sub-card{
+    background:#FAF6EE;
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding:16px;
+    margin-bottom:16px;
+  }
+  .privacy-box{
+    font-size:12px;
+    color:var(--ink-soft);
+    line-height:1.6;
+    background:#fff;
+    border:1px solid var(--line);
+    padding:12px;
+    border-radius:5px;
+    max-height:120px;
+    overflow-y:auto;
+    margin-bottom:12px;
+  }
+  .signup-btn{
+    width:100%;
+    margin-top:12px;
+    background:var(--wine-deep);
+    color:var(--paper);
+    font-family:"Noto Serif TC", serif;
+    font-size:16px;
+    font-weight:700;
+    letter-spacing:0.05em;
+    border:none;
+    border-radius:999px;
+    padding:14px;
+    cursor:pointer;
+  }
+  .signup-btn:active{
+    opacity:0.85;
+  }
+
+  /* CHECKOUT MODAL & MEMBER POINTS MODAL */
+  .modal-overlay{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.6);
+    z-index:999;
+    align-items:center;
+    justify-content:center;
+    padding:16px;
+  }
+  .modal-overlay.active{
+    display:flex;
+  }
+  .checkout-card{
+    background:var(--paper);
+    border:1px solid var(--gold);
+    border-radius:8px;
+    max-width:560px;
+    width:100%;
+    max-height:90vh;
+    overflow-y:auto;
+    padding:24px;
+    box-shadow:0 20px 50px rgba(0,0,0,0.3);
+  }
+  .checkout-title{
+    font-size:18px;
+    font-weight:700;
+    color:var(--wine-deep);
+    text-align:center;
+    margin-bottom:16px;
+    padding-bottom:10px;
+    border-bottom:2px solid var(--gold);
+  }
+  .price-highlight{
+    font-size:22px;
+    color:var(--wine);
+    font-weight:700;
+  }
+  .bank-box{
+    background:var(--paper-deep);
+    border:1px dashed var(--line);
+    border-radius:6px;
+    padding:14px;
+    margin:14px 0;
+    font-size:14px;
+    line-height:1.8;
+  }
+  .policy-box{
+    background:#FFF;
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding:14px;
+    font-size:12.5px;
+    color:var(--ink-soft);
+    line-height:1.7;
+    margin-bottom:16px;
+  }
+  .policy-box b{
+    color:var(--wine-deep);
+  }
+
+  footer{
+    text-align:center;
+    padding:20px 20px 50px;
+    font-size:12px;
+    letter-spacing:0.1em;
+    color:#9A8B73;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- 頂部導覽列：活動內容 / 購物車 / 查詢會員點數 -->
+  <nav class="top-nav">
+    <div class="nav-brand">仕女小聚</div>
+    <div class="nav-menu">
+      <a href="#event-details" class="nav-item">
+        <span>📖</span> 活動內容
+      </a>
+      <a href="#signup-form" class="nav-item">
+        <span>🛒</span> 購物車 <span class="cart-badge" id="nav-cart-count">1</span>
+      </a>
+      <button type="button" class="nav-item" onclick="openMemberPointsModal()">
+        <span>🐾</span> 查詢會員點數
+      </button>
+    </div>
+  </nav>
+
+  <!-- 16:9 最上方橫幅影像 -->
+  <div class="hero">
+    <img class="banner-img" id="banner-img" alt="ESG 文化美學系列 仕女小聚">
+  </div>
+
+  <div class="divider"><span>關於小聚</span></div>
+
+  <div class="intro">
+    <div class="tag">ESG 文化美學系列</div>
+
+    <!-- 簡介說明文字 -->
+    <div class="lead">
+      仕女小聚，歡迎所有想拋開煩惱，單純吃吃飯、認識新朋友的妳加入，在這裡請卸下任何包袱，開心的做自己，找回自己最舒適的樣貌。
+    </div>
+
+    <!-- 策劃者介紹 -->
+    <div class="planners">
+      <div class="planners-title">活動策劃者</div>
+
+      <div class="planner">
+        <div class="planner-name">01・喵老師（姚力菁）</div>
+        <p class="planner-desc">
+          從 2013 年致力食農永續，到 2023 年文化與音樂與美學永續。從 2019 年在中美洲進行國民外交活動，2020 年返台持續進行台尼交流活動。2026 年努力將我們的飲食文化、音樂、美學跟更多外國朋友分享，未來要將台灣的好，推向全世界。
+        </p>
+      </div>
+
+      <div class="planner">
+        <div class="planner-name">02・Fiona</div>
+        <p class="planner-desc">
+          旅居荷蘭 14 年，返台後辦了多場「荷你一起」共餐、讀書會、英語交流活動等…。真誠的人際交流，是 AI 無法取代的，共好、共享從來不是口號，結交志同道合的好友，是人生中最美好的事。
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 仕女小聚 001 標題與圖片區域 (活動內容錨點) -->
+  <div class="divider section-title" id="event-details"><span>仕女小聚 001</span></div>
+
+  <div class="event-posters">
+    <!-- 1. 活動緣起（策劃理念）-->
+    <div class="poster-subtitle">✦ 活動緣起（策劃理念） ✦</div>
+    <img id="poster-img-3" alt="仕女小聚 001 - 活動緣起（策劃理念）">
+
+    <!-- 2. 原活動詳細海報 -->
+    <div class="poster-name-row">
+      <span class="poster-name">穿越時空在大稻埕，遇見最美的自己</span>
+      <span class="badge-points">得到貓幣 1050 點</span>
+    </div>
+    <img id="poster-img-2" alt="仕女小聚 001 - 穿越時空在大稻埕，遇見最美的自己">
+  </div>
+
+  <div class="cta" id="signup-anchor">
+    <div class="cta-eyebrow">Join Our Salon</div>
+    <h3>預約一場<br><span class="highlight">真誠與優雅的交流</span></h3>
+    <a href="#signup-form" class="cta-btn">立即填寫報名表</a>
+    <p class="note">限額 8 名，歡迎閨蜜兩人同行報名</p>
+  </div>
+
+  <!-- 報名表單區塊 -->
+  <div class="signup" id="signup-form">
+    <div class="signup-card">
+      <div class="signup-section-title">活動報名與費用資訊</div>
+
+      <!-- 活動基本資訊 -->
+      <div class="event-summary-box">
+        <div><b>活動名稱：</b>仕女小聚 001：穿越時空在大稻埕，遇見最美的自己</div>
+        <div><b>活動日期：</b>2026 年 8 月 23 日（日）</div>
+        <div><b>活動時間：</b>9:30 - 16:00</div>
+        <div><b>活動費用：</b><span style="color:var(--wine); font-weight:700;">$2,100 / 人</span></div>
+      </div>
+
+      <form id="main-signup-form">
+        <!-- 選擇報名人數 -->
+        <div class="field">
+          <label for="ticket-count">選擇報名人數 *</label>
+          <select id="ticket-count" name="ticket-count" onchange="updateParticipantForms()">
+            <option value="1">1 位 ($2,100)</option>
+            <option value="2">2 位 ($4,200)</option>
+            <option value="3">3 位 ($6,300)</option>
+            <option value="4">4 位 ($8,400)</option>
+          </select>
+          <div class="field-hint">※ 本活動一人最多可報名四位，超過四位請洽小編。</div>
+        </div>
+
+        <!-- 發票資訊 -->
+        <div class="signup-section-title" style="margin-top: 24px;">發票索取方式</div>
+        <div class="field">
+          <label>發票類型 *</label>
+          <div class="radio-group">
+            <label><input type="radio" name="invoice-type" value="donate" onclick="toggleInvoiceOptions()" checked> 捐贈發票</label>
+            <label><input type="radio" name="invoice-type" value="issue" onclick="toggleInvoiceOptions()"> 開立發票</label>
+          </div>
+        </div>
+
+        <div id="invoice-details" style="display:none;" class="sub-card">
+          <div class="field">
+            <label>發票聯式 *</label>
+            <div class="radio-group">
+              <label><input type="radio" name="invoice-format" value="2" onclick="toggleTaxId()" checked> 二聯式電子發票</label>
+              <label><input type="radio" name="invoice-format" value="3" onclick="toggleTaxId()"> 三聯式發票（需開立統編）</label>
+            </div>
+          </div>
+          <div id="tax-id-field" class="field" style="display:none; margin-bottom: 0;">
+            <label for="tax-id">統一編號 / 抬頭 *</label>
+            <input type="text" id="tax-id" placeholder="請輸入 8 位統一編號與公司抬頭">
+          </div>
+        </div>
+
+        <!-- 參加身份選單 -->
+        <div class="signup-section-title" style="margin-top: 24px;">主報名者資料</div>
+        <div class="field">
+          <label>參加身份 *</label>
+          <div class="radio-group">
+            <label><input type="radio" name="member-type" value="self" onclick="toggleMemberSelf(true)" checked> 會員本人參加（自動帶入會員資料）</label>
+            <label><input type="radio" name="member-type" value="other" onclick="toggleMemberSelf(false)"> 非會員本人（幫他人報名）</label>
+          </div>
+          <div id="coin-notice" class="field-hint" style="display:none; color:var(--wine-deep);">
+            ※ 注意：勾選「非會員本人」，本次貓幣點數無法累積在您的帳號。系統將依填寫電話自動建立新會員編號（格式：20260706_0001）。
+          </div>
+        </div>
+
+        <!-- 主報名者欄位 -->
+        <div class="sub-card">
+          <div class="field">
+            <label for="p1-name">姓名 *</label>
+            <input type="text" id="p1-name" required value="喵老師">
+          </div>
+          <div class="field">
+            <label for="p1-phone">電話 *</label>
+            <input type="tel" id="p1-phone" required value="0912345678">
+          </div>
+          <div class="field">
+            <label for="p1-email">Email *</label>
+            <input type="email" id="p1-email" required value="miaw@example.com">
+          </div>
+          <div class="field">
+            <label for="p1-id">保險資料：身分證字號 *</label>
+            <input type="text" id="p1-id" required placeholder="請輸入身分證字號（投保平安險使用）">
+          </div>
+          <div class="field" style="margin-bottom:0;">
+            <label for="p1-dob">保險資料：西元出生年月日 *</label>
+            <input type="date" id="p1-dob" required>
+          </div>
+        </div>
+
+        <!-- 動態增加其他參加者 -->
+        <div id="additional-participants"></div>
+
+        <!-- 個資法保護聲明 -->
+        <div class="signup-section-title" style="margin-top: 20px;">個人資料保護聲明</div>
+        <div class="privacy-box">
+          本單位（好放心飲食行銷有限公司／ESG 文化美學系列）依據個人資料保護法規定，蒐集、處理及利用您所提供之個人資料（包括姓名、電話、Email、身分證字號及出生年月日），僅限於本次「仕女小聚 001」活動之聯繫、身分確認、保險辦理、開立發票及會員點數累積使用，不會提供給第三方或用於其他用途。
+        </div>
+        <div class="field">
+          <label style="font-weight:normal; cursor:pointer;">
+            <input type="checkbox" id="privacy-agree" required> 我已閱讀並同意上述個人資料保護聲明 *
+          </label>
+        </div>
+
+        <!-- 飲食調查 -->
+        <div class="signup-section-title" style="margin-top: 20px;">飲食調查</div>
+
+        <div class="field">
+          <label>飲食習慣 *</label>
+          <div class="radio-group">
+            <label><input type="radio" name="diet-type" value="meat" onclick="toggleVegetarianOptions(false)" checked> 葷食</label>
+            <label><input type="radio" name="diet-type" value="veg" onclick="toggleVegetarianOptions(true)"> 素食</label>
+          </div>
+        </div>
+
+        <div class="field" id="vegetarian-type-field" style="display:none;">
+          <label for="vegetarian-type">素食類型 *</label>
+          <select id="vegetarian-type">
+            <option value="">請選擇</option>
+            <option value="religious">宗教素</option>
+            <option value="pot-side">鍋邊素</option>
+            <option value="plant">蔬食</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="allergy">過敏物質</label>
+          <input type="text" id="allergy" placeholder="如無過敏物質可不填">
+        </div>
+
+        <div class="field">
+          <label>是否食用牛肉？ *</label>
+          <div class="radio-group">
+            <label><input type="radio" name="eat-beef" value="yes" checked> 是</label>
+            <label><input type="radio" name="eat-beef" value="no"> 否</label>
+          </div>
+        </div>
+
+        <!-- 行前須知 -->
+        <div class="signup-section-title" style="margin-top: 20px;">行前須知</div>
+        <div class="privacy-box">
+          <b>集合地點：</b>貳零年華（迪化街一段87號）<br>
+          <b>集合日期：</b>2026 年 8 月 23 日（日）<br>
+          <b>集合時間：</b>9:30<br><br>
+          <b>攜帶物品：</b>基本化妝品（補妝用）、平板或筆電擇一、輕便的平底鞋、隨身小電扇<br><br>
+          <b>服裝：</b>穿著一套美美洋裝、漂亮皮鞋（建議選中性色，古裝可搭，也可借古裝店的Aso鞋子）。古裝店建議旗袍穿起來要美美的，可帶束腹，另準備手帕或輕便毛巾擦汗<br><br>
+          <b>儀容：</b>到現場前需完成基本妝容（盤髮時會協助補妝）<br><br>
+          <b>行程簡單說明：</b>到現場立刻取景拍照（something new）→ 發餐盒 → 變裝 → 選配件 → 2樓拍照 → 過三關（特色店照相與踏查）→ 咖啡廳享用午餐與交流 → Bella老師手機拍片與AI智慧剪片共學 → 咖啡廳造景中庭實攝 → 交流分享作品 → 給自己的回憶小卡 → 大稻埕巡禮 → 歸還衣服 → 變回時裝自由拍攝時間
+        </div>
+
+        <!-- 肖像使用同意調查 -->
+        <div class="signup-section-title" style="margin-top: 20px;">活動側錄與肖像使用同意</div>
+
+        <div class="field">
+          <label>活動會進行側錄，是否願意將肖像作為本單位推廣文化活動之公開使用？ *</label>
+          <div class="radio-group">
+            <label><input type="radio" name="portrait-consent" value="yes" checked> 願意</label>
+            <label><input type="radio" name="portrait-consent" value="no"> 不願意</label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>是否願意在影片中被標注（如姓名、社群帳號）？ *</label>
+          <div class="radio-group">
+            <label><input type="radio" name="tag-consent" value="yes" checked> 願意</label>
+            <label><input type="radio" name="tag-consent" value="no"> 不願意</label>
+          </div>
+        </div>
+
+        <div class="field-hint">※ 若勾選不同意，影像會做部分遮蔽處理。</div>
+
+        <!-- 活動前調查 -->
+        <div class="signup-section-title" style="margin-top: 20px;">活動前調查</div>
+
+        <div class="field">
+          <label>當天交通工具（可複選）</label>
+          <div class="radio-group">
+            <label><input type="checkbox" name="transport" value="mrt"> 捷運</label>
+            <label><input type="checkbox" name="transport" value="bus"> 公車</label>
+            <label><input type="checkbox" name="transport" value="drive"> 自行開車</label>
+            <label><input type="checkbox" name="transport" value="scooter"> 騎機車</label>
+            <label><input type="checkbox" name="transport" value="ubike"> YouBike／共享單車</label>
+            <label><input type="checkbox" name="transport" value="taxi"> 計程車／叫車服務</label>
+            <label><input type="checkbox" name="transport" value="other"> 其他</label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="info-source">您是從哪裡獲得這個活動資訊？</label>
+          <select id="info-source">
+            <option value="">請選擇</option>
+            <option value="line">LINE 官方帳號</option>
+            <option value="facebook">Facebook</option>
+            <option value="instagram">Instagram</option>
+            <option value="friend">朋友介紹</option>
+            <option value="other">其他</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="industry">目前從事工作行業類別？</label>
+          <select id="industry">
+            <option value="">請選擇</option>
+            <option value="service">服務業</option>
+            <option value="tech">科技／資訊業</option>
+            <option value="education">教育業</option>
+            <option value="medical">醫療／健康產業</option>
+            <option value="finance">金融／保險業</option>
+            <option value="creative">文創／設計／媒體業</option>
+            <option value="freelance">自由業／自營商</option>
+            <option value="homemaker">家管</option>
+            <option value="student">學生</option>
+            <option value="other">其他</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label>工作上使用 AI 的頻率</label>
+          <div class="radio-group">
+            <label><input type="radio" name="ai-usage" value="high"> 一週五天以上</label>
+            <label><input type="radio" name="ai-usage" value="mid"> 一週三到五天</label>
+            <label><input type="radio" name="ai-usage" value="low"> 一週三天以下</label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>經營自媒體經驗</label>
+          <div class="radio-group">
+            <label><input type="radio" name="media-exp" value="none"> 尚無經營，或偶爾發文</label>
+            <label><input type="radio" name="media-exp" value="mid"> 經營中，每月約 1～4 篇</label>
+            <label><input type="radio" name="media-exp" value="active"> 活躍經營，每週 1 篇以上</label>
+          </div>
+        </div>
+
+        <div class="field" style="margin-bottom:0;">
+          <label for="pre-course-note">課前溝通與期待</label>
+          <textarea id="pre-course-note" rows="4" placeholder="有任何想跟我們分享的期待或需求，都歡迎在這裡留言" style="width:100%; font-family:'Noto Serif TC', serif; font-size:15px; color:var(--ink); background:#fff; border:1px solid var(--line); border-radius:5px; padding:11px 12px; outline:none; resize:vertical;"></textarea>
+        </div>
+
+        <div class="privacy-box" style="margin-top:20px;">
+          感謝提供我們這些資訊，活動能夠更了解您的期待與需求，我希望能夠提供最舒適的體驗行程，以及最實用的課程，穿越時空來到大稻埕不只有文化體驗也有科技乾貨。期待很快見到大家，有任何課前需要溝通的部分都歡迎直接在 LINE 官方上留言給我們。
+        </div>
+
+        <button type="button" class="signup-btn" onclick="openCheckout()">前往結帳與確認金額</button>
+      </form>
+    </div>
+  </div>
+
+  <footer>
+    © ESG 文化美學系列｜仕女小聚。All Rights Reserved.
+  </footer>
+
+</div>
+
+<!-- 查詢會員點數 / 貓幣 Modal -->
+<div class="modal-overlay" id="member-points-modal">
+  <div class="checkout-card">
+    <div class="checkout-title">🐾 會員點數（貓幣）查詢</div>
+
+    <div style="font-size:14.5px; line-height:1.8; margin-bottom:16px;">
+      <div><b>會員姓名：</b>喵老師 (姚力菁)</div>
+      <div><b>綁定電話：</b>0912****78</div>
+      <div><b>目前累積貓幣：</b><span class="price-highlight">1,050 點</span></div>
+    </div>
+
+    <div class="bank-box" style="font-size:13px; margin:10px 0;">
+      <div style="font-weight:700; color:var(--wine-deep); margin-bottom:4px;">【貓幣使用與累積說明】</div>
+      • 參加「仕女小聚」系列活動，每報名 1 位即可獲得 1050 點貓幣。<br>
+      • 貓幣可用於後續小聚活動折抵或精選禮品兌換。<br>
+      • 限會員本人報名時累積至個人帳號。
+    </div>
+
+    <button type="button" class="signup-btn" onclick="closeMemberPointsModal()">關閉視窗</button>
+  </div>
+</div>
+
+<!-- 結帳與匯款資訊 Modal -->
+<div class="modal-overlay" id="checkout-modal">
+  <div class="checkout-card">
+    <div class="checkout-title">確認報名金額與付款資訊</div>
+
+    <div style="margin-bottom: 16px; font-size:15px; line-height:1.8;">
+      <div><b>報名場次：</b>仕女小聚 001：穿越時空在大稻埕</div>
+      <div><b>報名人數：</b><span id="summary-count">1</span> 位</div>
+      <div><b>貓幣回饋：</b><span id="summary-coins">1050</span> 點</div>
+      <div style="margin-top: 6px;"><b>結帳總金額：</b><span class="price-highlight" id="summary-total">$2,100</span></div>
+    </div>
+
+    <!-- 匯款帳號 -->
+    <div class="bank-box">
+      <div style="font-weight:700; color:var(--wine-deep); margin-bottom:4px;">【銀行匯款帳戶】</div>
+      <div><b>銀行名稱：</b>008 華南銀行 永和分行</div>
+      <div><b>戶名：</b>好放心飲食行銷有限公司</div>
+      <div><b>帳號：</b>164101300006</div>
+    </div>
+
+    <!-- 退費說明 -->
+    <div class="policy-box">
+      <div style="font-weight:700; color:var(--wine-deep); margin-bottom:6px;">【取消與退費說明】</div>
+      • <b>活動前七日（不含當天）取消：</b>全額退費（扣除轉帳手續費）<br>
+      • <b>活動前五日（不含當天）取消：</b>退回 50%（扣除轉帳手續費）<br>
+      • <b>活動前三日（不含當天）取消：</b>退回 30%（扣除轉帳手續費）<br>
+      • <b>活動當天取消：</b>退回 15%（扣除轉帳手續費）
+    </div>
+
+    <div style="text-align:center; font-size:13.5px; color:var(--wine); margin-bottom:16px; font-weight:600;">
+      ※ 匯款完畢後，請截圖傳至 LINE 官方帳號小編確認，即完成報名流程！
+    </div>
+    <a href="https://lin.ee/ZAuOvhD" target="_blank" class="signup-btn" style="background:#06C755; text-decoration:none; display:inline-block; text-align:center;"> 💬 開啟 LINE 傳送匯款截圖</a>
+    <button type="button" class="signup-btn" onclick="confirmSubmit()">完成報名並關閉</button>
+    <button type="button" class="signup-btn" style="background:var(--ink-soft); margin-top:8px;" onclick="closeCheckout()">返回修改資料</button>
+  </div>
+</div>
+
+
+<script>
+  // 圖片載入修正版：
+  // 同一資料夾內只要檔名正確，即使副檔名是 PNG/JPG/JPEG/WEBP，也會自動嘗試載入。
+  function loadLocalImage(elementId, baseName) {
+    const img = document.getElementById(elementId);
+    const extensions = ['', '.png', '.jpg', '.jpeg', '.webp', '.PNG', '.JPG', '.JPEG', '.WEBP'];
+    let index = 0;
+
+    function tryNext() {
+      if (index >= extensions.length) {
+        console.warn('找不到圖片：', baseName);
+        return;
+      }
+
+      const path = './' + baseName + extensions[index++];
+      const test = new Image();
+
+      test.onload = function () {
+        img.src = path;
+      };
+
+      test.onerror = tryNext;
+      test.src = path;
+    }
+
+    tryNext();
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    loadLocalImage('banner-img', 'watermarked_img_13493820410911707551');
+    loadLocalImage('poster-img-3', 'image_3');
+    loadLocalImage('poster-img-2', 'image_2');
+  });
+</script>
+
+<script>
+  // 切換發票選項
+  function toggleInvoiceOptions() {
+    const isIssue = document.querySelector('input[name="invoice-type"][value="issue"]').checked;
+    document.getElementById('invoice-details').style.display = isIssue ? 'block' : 'none';
+  }
+
+  // 切換三聯式發票統編欄位
+  function toggleTaxId() {
+    const isFormat3 = document.querySelector('input[name="invoice-format"][value="3"]').checked;
+    document.getElementById('tax-id-field').style.display = isFormat3 ? 'block' : 'none';
+  }
+
+  // 切換會員本人/非會員本人
+  function toggleMemberSelf(isSelf) {
+    const coinNotice = document.getElementById('coin-notice');
+    coinNotice.style.display = isSelf ? 'none' : 'block';
+
+    if (isSelf) {
+      document.getElementById('p1-name').value = '喵老師';
+      document.getElementById('p1-phone').value = '0912345678';
+      document.getElementById('p1-email').value = 'miaw@example.com';
+    } else {
+      document.getElementById('p1-name').value = '';
+      document.getElementById('p1-phone').value = '';
+      document.getElementById('p1-email').value = '';
+    }
+  }
+
+  // 切換葷食/素食，顯示素食類型下拉選單
+  function toggleVegetarianOptions(isVeg) {
+    const field = document.getElementById('vegetarian-type-field');
+    const select = document.getElementById('vegetarian-type');
+    field.style.display = isVeg ? 'block' : 'none';
+    select.required = isVeg;
+    if (!isVeg) select.value = '';
+  }
+
+  // 動態增減參加者表單 (最多 4 位)
+  function updateParticipantForms() {
+    const count = parseInt(document.getElementById('ticket-count').value);
+    document.getElementById('nav-cart-count').innerText = count;
+
+    const container = document.getElementById('additional-participants');
+    container.innerHTML = '';
+
+    for (let i = 2; i <= count; i++) {
+      const card = document.createElement('div');
+      card.className = 'sub-card';
+      card.innerHTML = `
+        <div class="signup-section-title" style="margin-bottom:12px; font-size:14.5px;">參加者 ${i} 資料</div>
+        <div class="field">
+          <label for="p${i}-name">姓名 *</label>
+          <input type="text" id="p${i}-name" required placeholder="請輸入參加者 ${i} 姓名">
+        </div>
+        <div class="field">
+          <label for="p${i}-phone">電話 *</label>
+          <input type="tel" id="p${i}-phone" required placeholder="請輸入參加者 ${i} 電話">
+        </div>
+        <div class="field">
+          <label for="p${i}-email">Email *</label>
+          <input type="email" id="p${i}-email" required placeholder="請輸入參加者 ${i} Email">
+        </div>
+        <div class="field">
+          <label for="p${i}-id">保險資料：身分證字號 *</label>
+          <input type="text" id="p${i}-id" required placeholder="請輸入身分證字號">
+        </div>
+        <div class="field" style="margin-bottom:0;">
+          <label for="p${i}-dob">保險資料：西元出生年月日 *</label>
+          <input type="date" id="p${i}-dob" required>
+        </div>
+      `;
+      container.appendChild(card);
+    }
+  }
+
+  // 開啟 / 關閉會員點數 Modal
+  function openMemberPointsModal() {
+    document.getElementById('member-points-modal').classList.add('active');
+  }
+
+  function closeMemberPointsModal() {
+    document.getElementById('member-points-modal').classList.remove('active');
+  }
+
+  // 開啟結帳 Modal 試算金額
+  function openCheckout() {
+    const form = document.getElementById('main-signup-form');
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+
+    const count = parseInt(document.getElementById('ticket-count').value);
+    const total = count * 2100;
+    const coins = count * 1050;
+
+    document.getElementById('summary-count').innerText = count;
+    document.getElementById('summary-total').innerText = '$' + total.toLocaleString();
+    document.getElementById('summary-coins').innerText = coins.toLocaleString();
+
+    document.getElementById('checkout-modal').classList.add('active');
+  }
+
+  function closeCheckout() {
+    document.getElementById('checkout-modal').classList.remove('active');
+  }
+
+  // 後端 Apps Script 網址
+  const WEBAPP_URL = 'https://script.google.com/macros/s/AKfycbxy4c5tFj4lIWG2cQGTf2MvoE9HZvHGwdqp28elN60uxlS-jjSfKF7W5LbKSoECxZlv/exec';
+
+  // 收集同行者資料（將姓名/電話/Email/身分證/生日合併成一個字串）
+  function collectCompanion(idx) {
+    const nameEl = document.getElementById('p' + idx + '-name');
+    if (!nameEl) return '';
+    const name  = nameEl.value || '';
+    const phone = document.getElementById('p' + idx + '-phone').value || '';
+    const email = document.getElementById('p' + idx + '-email').value || '';
+    const id    = document.getElementById('p' + idx + '-id').value || '';
+    const dob   = document.getElementById('p' + idx + '-dob').value || '';
+    if (!name) return '';
+    return `${name} / ${phone} / ${email} / ${id} / ${dob}`;
+  }
+
+  // 收集勾選的複選框（如交通工具）
+  function collectCheckedValues(name) {
+    return Array.from(document.querySelectorAll(`input[name="${name}"]:checked`))
+      .map(el => el.parentElement.textContent.trim())
+      .join('、');
+  }
+
+  function collectRadioLabel(name) {
+    const el = document.querySelector(`input[name="${name}"]:checked`);
+    if (!el) return '';
+    return el.parentElement.textContent.trim();
+  }
+
+  function collectFormData() {
+    const count = parseInt(document.getElementById('ticket-count').value);
+    const isVeg = document.querySelector('input[name="diet-type"]:checked').value === 'veg';
+
+    return {
+      eventName:      '仕女小聚 001：穿越時空在大稻埕，遇見最美的自己',
+      peopleCount:    count,
+      memberType:     collectRadioLabel('member-type'),
+      name:           document.getElementById('p1-name').value,
+      phone:          document.getElementById('p1-phone').value,
+      email:          document.getElementById('p1-email').value,
+      idCard:         document.getElementById('p1-id').value,
+      birthday:       document.getElementById('p1-dob').value,
+      companion2:     collectCompanion(2),
+      companion3:     collectCompanion(3),
+      companion4:     collectCompanion(4),
+      invoiceType:    collectRadioLabel('invoice-type'),
+      taxIdAndTitle:  document.getElementById('tax-id') ? document.getElementById('tax-id').value : '',
+      dietType:       collectRadioLabel('diet-type'),
+      vegType:        isVeg ? document.getElementById('vegetarian-type').value : '',
+      allergy:        document.getElementById('allergy').value,
+      eatBeef:        collectRadioLabel('eat-beef'),
+      transport:      collectCheckedValues('transport'),
+      infoSource:     document.getElementById('info-source').value,
+      industry:       document.getElementById('industry').value,
+      aiUsage:        collectRadioLabel('ai-usage'),
+      mediaExp:       collectRadioLabel('media-exp'),
+      preCourseNote:  document.getElementById('pre-course-note').value,
+      portraitConsent: collectRadioLabel('portrait-consent'),
+      tagConsent:      collectRadioLabel('tag-consent'),
+    };
+  }
+
+  async function confirmSubmit() {
+    const btn = document.querySelector('#checkout-modal .signup-btn');
+    const originalText = btn.innerText;
+    btn.innerText = '送出中…請稍候';
+    btn.disabled = true;
+
+    try {
+      const payload = collectFormData();
+      const res = await fetch(WEBAPP_URL, {
+        method: 'POST',
+        body: JSON.stringify(payload),
+      });
+      const result = await res.json();
+
+      if (result.status === 'success') {
+        alert('報名成功！確認信已發送至您的 Email，請記得完成匯款並截圖傳至 LINE 官方帳號小編確認！');
+        closeCheckout();
+      } else {
+        alert('報名送出時發生問題：' + (result.message || '請稍後再試或聯繫小編'));
+      }
+    } catch (err) {
+      alert('網路連線異常，請稍後再試，或直接透過 LINE 官方帳號聯繫小編完成報名。');
+      console.error(err);
+    } finally {
+      btn.innerText = originalText;
+      btn.disabled = false;
+    }
+  }
+
+  // 點擊 Modal 外層遮罩關閉功能
+  document.querySelectorAll('.modal-overlay').forEach(overlay => {
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay) {
+        overlay.classList.remove('active');
+      }
+    });
+  });
+</script>
+</body>
+</html>
