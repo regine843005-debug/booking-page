@@ -595,7 +595,10 @@
   .sq-card{position:relative;display:block;width:100%;aspect-ratio:1/1;padding:0;border:none;border-radius:8px;overflow:hidden;cursor:pointer;background:var(--paper-deep);box-shadow:0 8px 20px -10px rgba(0,0,0,0.45);}
   .sq-card img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .3s;}
   .sq-card:active img,.sq-card:hover img{transform:scale(1.04);}
-  .sq-hint{position:absolute;left:0;right:0;bottom:0;padding:22px 6px 9px;background:linear-gradient(transparent,rgba(40,25,15,0.75));color:#fff;font-family:"Noto Serif TC",serif;font-size:13px;letter-spacing:0.08em;text-align:center;}
+  .sq-hint{position:absolute;left:0;right:0;bottom:0;padding:46px 4px 10px;background:linear-gradient(transparent,rgba(40,25,15,0.55) 35%,rgba(40,25,15,0.85));color:#fff;font-family:"Noto Serif TC",serif;text-align:center;display:flex;flex-direction:column;align-items:center;gap:2px;}
+  .sq-date{font-size:clamp(20px,6.2vw,26px);font-weight:700;letter-spacing:0.04em;line-height:1.1;text-shadow:0 2px 6px rgba(0,0,0,0.4);}
+  .sq-name{font-size:clamp(13px,4.1vw,17px);font-weight:700;letter-spacing:0.02em;white-space:nowrap;text-shadow:0 2px 6px rgba(0,0,0,0.4);}
+  .sq-more{font-size:11.5px;letter-spacing:0.08em;color:#F3E3C6;margin-top:3px;}
   .fifty-detail-card{position:relative;padding:0 0 20px;max-width:600px;}
   .fifty-detail{display:none;}
   .fifty-detail.show{display:block;}
@@ -1022,11 +1025,11 @@
     <div class="fifty-grid">
       <button type="button" class="sq-card" onclick="openFiftyDetail('1207')" aria-label="12月7日 人生回顧暨感恩餐會">
         <img src="fifty/card-1207.jpg" alt="12/7 人生回顧暨感恩餐會">
-        <span class="sq-hint">點選看活動詳情</span>
+        <span class="sq-hint"><span class="sq-date">12/7</span><span class="sq-name">食藝餐桌・感恩餐會</span><span class="sq-more">點選看活動詳情</span></span>
       </button>
       <button type="button" class="sq-card" onclick="openFiftyDetail('1219')" aria-label="12月19日 50歲生日歡慶派對">
         <img src="fifty/card-1219.jpg" alt="12/19 50歲生日歡慶派對">
-        <span class="sq-hint">點選看活動詳情</span>
+        <span class="sq-hint"><span class="sq-date">12/19</span><span class="sq-name">食藝餐桌・生日派對</span><span class="sq-more">點選看活動詳情</span></span>
       </button>
     </div>
 
