@@ -565,6 +565,84 @@
     letter-spacing:0.1em;
     color:#9A8B73;
   }
+
+  /* ===== 活動選單按鈕（可收合） ===== */
+  .event-menu{margin:28px 22px 0;display:flex;flex-direction:column;gap:14px;}
+  .event-toggle{
+    width:100%;display:flex;align-items:center;justify-content:space-between;gap:12px;
+    background:var(--wine-deep);color:var(--paper);border:none;border-radius:8px;
+    padding:18px 22px;font-family:"Noto Serif TC",serif;font-size:17px;font-weight:700;
+    letter-spacing:0.08em;cursor:pointer;text-align:left;box-shadow:0 8px 20px -10px rgba(0,0,0,0.45);
+  }
+  .event-toggle small{display:block;font-size:12.5px;font-weight:400;letter-spacing:0.05em;color:#E3C9A5;margin-top:4px;}
+  .event-toggle .arrow{font-size:14px;transition:transform .25s;flex-shrink:0;}
+  .event-toggle.open .arrow{transform:rotate(180deg);}
+  .event-toggle.gold{background:var(--gold);}
+  .event-toggle.gold small{color:#FFF4E2;}
+  .event-panel{display:none;}
+  .event-panel.open{display:block;}
+  .panel-close{
+    display:block;margin:22px auto 6px;background:transparent;color:var(--wine);
+    border:1px solid var(--line);border-radius:999px;padding:9px 26px;
+    font-family:"Noto Serif TC",serif;font-size:14px;cursor:pointer;width:auto;
+  }
+  .fifty-card{margin:18px 22px 0;background:#fff;border:1px solid var(--line);border-radius:8px;padding:24px 22px;line-height:1.9;color:var(--ink);}
+  .fifty-card h4{font-size:17px;color:var(--wine-deep);margin-bottom:6px;}
+  .fifty-card .date{font-size:14px;color:var(--gold);font-weight:700;letter-spacing:0.05em;}
+  .fifty-card p{font-size:14.5px;color:var(--ink-soft);margin-top:6px;}
+  /* ===== 五十而豐 ===== */
+  .fifty-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 22px 0;}
+  .sq-card{position:relative;display:block;width:100%;aspect-ratio:1/1;padding:0;border:none;border-radius:8px;overflow:hidden;cursor:pointer;background:var(--paper-deep);box-shadow:0 8px 20px -10px rgba(0,0,0,0.45);}
+  .sq-card img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .3s;}
+  .sq-card:active img,.sq-card:hover img{transform:scale(1.04);}
+  .sq-hint{position:absolute;left:0;right:0;bottom:0;padding:22px 6px 9px;background:linear-gradient(transparent,rgba(40,25,15,0.75));color:#fff;font-family:"Noto Serif TC",serif;font-size:13px;letter-spacing:0.08em;text-align:center;}
+  .fifty-detail-card{position:relative;padding:0 0 20px;max-width:600px;}
+  .fifty-detail{display:none;}
+  .fifty-detail.show{display:block;}
+  .detail-poster{width:100%;display:block;border-radius:8px 8px 0 0;}
+  .modal-x{position:sticky;top:8px;float:right;margin:8px 8px -44px 0;z-index:2;width:36px;height:36px;border-radius:50%;border:none;background:rgba(59,46,36,0.75);color:#fff;font-size:22px;line-height:36px;cursor:pointer;padding:0;}
+  .info-card{margin:16px 16px 0;background:#FBF8F1;border:1px solid #D8C9AE;border-radius:6px;padding:20px 18px;color:var(--ink);}
+  .info-eyebrow{font-size:12.5px;letter-spacing:0.15em;color:var(--ink-soft);}
+  .info-card h4{font-size:20px;color:#3A3A2A;margin:4px 0 2px;}
+  .info-sub{font-size:13px;color:var(--ink-soft);padding-bottom:12px;border-bottom:1px solid var(--gold);}
+  .info-sec{padding:12px 0;border-bottom:1px solid #E6DAC4;}
+  .info-sec:last-child{border-bottom:none;padding-bottom:0;}
+  .info-h{font-size:15px;font-weight:700;color:#3A3A2A;margin-bottom:6px;}
+  .info-big{font-size:17px;margin-bottom:4px;}
+  .info-sec p{font-size:14px;line-height:1.8;margin:4px 0;}
+  .info-price{font-size:19px;font-weight:700;color:var(--wine-deep);}
+  .info-gold{color:var(--gold);}
+  .info-muted{color:#8A7B66;font-size:13px !important;}
+  .info-contact{margin:16px 16px 0;font-size:13px;color:var(--ink-soft);text-align:center;}
+  .fifty-detail-card .signup-btn{display:block;width:calc(100% - 32px);margin:14px 16px 0;}
+  .session-list{display:flex;flex-direction:column;gap:10px;}
+  .session-opt{display:flex !important;align-items:flex-start;gap:10px;background:#fff;border:1px solid var(--line);border-radius:6px;padding:12px;font-weight:normal !important;line-height:1.6;cursor:pointer;}
+  .session-opt input,.radio-group input,.agree-line input{width:auto !important;margin-top:4px;flex-shrink:0;}
+  .consent-intro{font-size:13.5px;line-height:1.8;color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:6px;padding:12px;margin-bottom:14px;}
+  .consent-sub{display:block;font-size:12px;color:var(--ink-soft);margin-top:6px;}
+  .agree-line{display:flex;gap:8px;align-items:flex-start;font-size:13.5px;margin-bottom:6px;}
+  .fifty-total{margin-top:16px;background:#fff;border:1px solid var(--gold);border-radius:6px;padding:12px;font-size:14px;line-height:1.8;text-align:center;}
+  .fifty-total b{color:var(--wine-deep);font-size:18px;}
+  /* ===== 五十而豐 滿意度調查 ===== */
+  .survey-card{position:relative;display:block;width:calc(100% - 44px);margin:14px 22px 0;padding:0;border:none;border-radius:8px;overflow:hidden;cursor:pointer;aspect-ratio:2.2/1;box-shadow:0 8px 20px -10px rgba(0,0,0,0.45);background:var(--paper-deep);}
+  .survey-card img{width:100%;height:100%;object-fit:cover;display:block;}
+  .survey-card-text{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;background:linear-gradient(rgba(40,25,15,0.35),rgba(40,25,15,0.6));color:#fff;font-family:"Noto Serif TC",serif;text-align:center;}
+  .sc-title{font-size:19px;font-weight:700;letter-spacing:0.12em;}
+  .sc-sub{font-size:13px;letter-spacing:0.06em;color:#F3E3C6;}
+  .sc-hint{margin-top:6px;font-size:12px;border:1px solid rgba(255,255,255,0.7);border-radius:999px;padding:3px 12px;}
+  .sv-intro{font-size:14px;line-height:1.8;margin-bottom:12px;}
+  .sv-muted{font-size:12.5px;color:#8A7B66;}
+  .sv-section{margin:22px 0 10px;font-size:15px;font-weight:700;color:var(--wine-deep);border-left:3px solid var(--gold);padding-left:8px;}
+  .sv-block{background:#fff;border:1px solid var(--line);border-radius:6px;padding:12px;margin-bottom:10px;}
+  .sv-q{font-size:14px;font-weight:600;margin-bottom:8px;}
+  .sv-num{font-weight:600;}
+  .stars{display:flex;gap:6px;flex-wrap:wrap;}
+  .stars button{flex:1;min-width:60px;letter-spacing:-1px;background:#FBF8F1;border:1px solid var(--line);border-radius:6px;padding:7px 2px;font-size:13px;color:#C9B79A;cursor:pointer;line-height:1.2;font-family:inherit;}
+  .stars button small{display:block;font-size:11px;color:var(--ink-soft);margin-top:2px;}
+  .stars button.on{background:var(--wine-deep);border-color:var(--wine-deep);color:#F3C969;}
+  .stars button.on small{color:#F4EDE1;}
+  .stars.missing button{border-color:#C0392B;}
+  .sv-fb{margin-top:8px;width:100%;font-family:"Noto Serif TC",serif;font-size:14px;border:1px solid var(--line);border-radius:5px;padding:8px 10px;background:#FBF8F1;resize:vertical;}
 </style>
 <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
 </head>
@@ -592,6 +670,14 @@
     <img class="banner-img" id="banner-img" alt="ESG 文化美學系列 仕女小聚">
   </div>
 
+  <!-- 活動選單：點按鈕展開／收起 -->
+  <div class="event-menu">
+    <button type="button" class="event-toggle" id="btn-salon" onclick="togglePanel('salon')">
+      <span>仕女小聚 001<small>穿越時空在大稻埕，遇見最美的自己</small></span><span class="arrow">▼</span>
+    </button>
+  </div>
+
+  <div class="event-panel" id="panel-salon">
   <div class="divider"><span>關於小聚</span></div>
 
   <div class="intro">
@@ -923,6 +1009,333 @@
     </div>
   </div>
 
+    <button type="button" class="panel-close" onclick="togglePanel('salon')">▲ 收起仕女小聚</button>
+  </div><!-- /panel-salon -->
+
+  <div class="event-menu">
+    <button type="button" class="event-toggle gold" id="btn-fifty" onclick="togglePanel('fifty')">
+      <span>食藝餐桌・五十而豐<small>12/7 感恩餐會｜12/19 生日派對</small></span><span class="arrow">▼</span>
+    </button>
+  </div>
+
+  <div class="event-panel" id="panel-fifty">
+    <div class="fifty-grid">
+      <button type="button" class="sq-card" onclick="openFiftyDetail('1207')" aria-label="12月7日 人生回顧暨感恩餐會">
+        <img src="fifty/card-1207.jpg" alt="12/7 人生回顧暨感恩餐會">
+        <span class="sq-hint">點選看活動詳情</span>
+      </button>
+      <button type="button" class="sq-card" onclick="openFiftyDetail('1219')" aria-label="12月19日 50歲生日歡慶派對">
+        <img src="fifty/card-1219.jpg" alt="12/19 50歲生日歡慶派對">
+        <span class="sq-hint">點選看活動詳情</span>
+      </button>
+    </div>
+
+    <!-- 滿意度調查卡片 -->
+    <button type="button" class="survey-card" onclick="openFiftySurvey()" aria-label="參加者滿意度調查">
+      <img src="fifty/card-survey.jpg" alt="">
+      <span class="survey-card-text">
+        <span class="sc-title">參加者滿意度調查</span>
+        <span class="sc-sub">感謝入座・填寫送 80 點貓幣</span>
+        <span class="sc-hint">點選開始填寫</span>
+      </span>
+    </button>
+
+    <!-- 滿意度調查表 -->
+    <div class="signup" id="fifty-survey" style="display:none; padding-top:22px;">
+      <div class="signup-card">
+        <div class="signup-section-title">食藝餐桌・五十而豐｜參加者滿意度調查</div>
+        <p class="sv-intro">謝謝你來到這張餐桌！花 2 分鐘留下你的感受，送出後送你 <b>80 點貓幣</b>。<br><span class="sv-muted">評分為必填（2～5 顆星），文字題可自由填寫。</span></p>
+
+        <div class="sv-block">
+          <div class="sv-q">1. 參加場次 *</div>
+          <div class="session-list">
+            <label class="session-opt"><input type="radio" name="sv-session" value="1207" onchange="renderSurveyDishes()"><span><b>12/7（一）</b>人生回顧暨感恩餐會</span></label>
+            <label class="session-opt"><input type="radio" name="sv-session" value="1219" onchange="renderSurveyDishes()"><span><b>12/19（六）</b>50 歲生日歡慶派對</span></label>
+          </div>
+          <div class="field" style="margin-top:12px;"><label for="sv-name">姓名 *</label><input type="text" id="sv-name"></div>
+          <div class="field" style="margin-bottom:0;"><label for="sv-phone">手機 *（請填報名時的號碼，80 點貓幣會存入此號碼的會員資料）</label><input type="tel" id="sv-phone" placeholder="09xxxxxxxx"></div>
+        </div>
+
+        <div class="sv-section">今晚的五道菜</div>
+        <div id="sv-dishes"><p class="sv-muted">請先選擇參加場次</p></div>
+
+        <div class="sv-section">今晚的體驗</div>
+        <div class="sv-block"><div class="sv-q">7. 高訂餐具導覽 *</div><div class="stars" data-k="tour"></div></div>
+        <div class="sv-block"><div class="sv-q">8. 餐桌美學（佈置、氛圍） *</div><div class="stars" data-k="table"></div></div>
+        <div class="sv-block"><div class="sv-q">9. 花藝禮籃製作 *</div><div class="stars" data-k="flower"></div></div>
+        <div class="sv-block"><div class="sv-q">10. 場地與流程安排 *</div><div class="stars" data-k="venue"></div></div>
+        <div class="sv-block" id="sv-party-block" style="display:none;"><div class="sv-q">11. 下半場：卡拉OK × 雞尾酒派對 *</div><div class="stars" data-k="party"></div></div>
+
+        <div class="sv-section">留下你的故事</div>
+        <div class="field"><label for="sv-best-dish"><span class="sv-num">12.</span> 最難忘的一道菜</label><input type="text" id="sv-best-dish"></div>
+        <div class="field"><label for="sv-best-moment"><span class="sv-num">13.</span> 最難忘的一件事</label><textarea id="sv-best-moment" rows="2"></textarea></div>
+        <div class="field"><label for="sv-person"><span class="sv-num">14.</span> 最想認識的一個人</label><input type="text" id="sv-person" placeholder="可以寫名字或描述，例如：坐我對面穿米色洋裝的姊姊"></div>
+        <div class="field"><label for="sv-host"><span class="sv-num">15.</span> 給主辦單位的一句話</label><textarea id="sv-host" rows="2"></textarea></div>
+        <div class="field"><label for="sv-mood"><span class="sv-num">16.</span> 用一句話寫下今天的心情</label><input type="text" id="sv-mood"></div>
+
+        <div class="sv-section">總結</div>
+        <div class="sv-block"><div class="sv-q">17. 整體滿意度 *</div><div class="stars" data-k="overall"></div></div>
+        <div class="sv-block"><div class="sv-q">18. 費用與內容是否值得 *</div><div class="stars" data-k="value"></div></div>
+
+        <div class="field"><label for="sv-wish"><span class="sv-num">19.</span> 未來敲碗的課程</label><textarea id="sv-wish" rows="2" placeholder="想上什麼課、想參加什麼樣的餐桌，都可以敲碗！"></textarea></div>
+
+        <div class="sv-block">
+          <div class="sv-q">20. 我們會把「永續料理餐桌」整理成作品投稿與推廣，願意讓我們使用你的回饋嗎？ *</div>
+          <div class="radio-group" style="flex-direction:column; gap:8px;">
+            <label><input type="radio" name="sv-auth" value="可具名使用"> 可以，具名使用</label>
+            <label><input type="radio" name="sv-auth" value="匿名可以"> 可以，但請匿名</label>
+            <label><input type="radio" name="sv-auth" value="不同意"> 不同意</label>
+          </div>
+        </div>
+
+        <button type="button" class="signup-btn" id="sv-submit" onclick="submitFiftySurvey()">送出問卷，領 80 點貓幣</button>
+        <div id="sv-done" style="display:none; margin-top:14px; text-align:center; color:var(--wine-deep); font-weight:700; line-height:1.8;"></div>
+      </div>
+    </div>
+
+    <!-- 報名表（兩場共用），按「點我報名」後才顯示 -->
+    <div class="signup" id="fifty-signup" style="display:none; padding-top:22px;">
+      <div class="signup-card">
+        <div class="signup-section-title">食藝餐桌・五十而豐｜報名表</div>
+
+        <div class="field">
+          <label>LINE 顯示名稱</label>
+          <input type="text" id="fifty-line-name" readonly placeholder="開啟 LINE 後自動帶入" style="background:var(--paper-deep); color:var(--ink-soft);">
+        </div>
+
+        <div class="field">
+          <label>報名場次 *（可複選）</label>
+          <div class="session-list">
+            <label class="session-opt"><input type="checkbox" name="fifty-session" value="1207" onchange="updateFiftyTotal()">
+              <span><b>12/7（一）18:00–20:45</b><br>人生回顧暨感恩餐會｜約 $2,350／人</span></label>
+            <label class="session-opt"><input type="checkbox" name="fifty-session" value="1219" onchange="updateFiftyTotal()">
+              <span><b>12/19（六）18:20–21:45</b><br>50 歲生日歡慶派對｜約 $2,950／人</span></label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="fifty-count">報名人數 *</label>
+          <select id="fifty-count" onchange="updateFiftyCompanions(); updateFiftyTotal();">
+            <option value="1">1 位</option>
+            <option value="2">2 位</option>
+            <option value="3">3 位</option>
+            <option value="4">4 位</option>
+          </select>
+          <div class="field-hint">※ 一次最多報名四位，超過請洽 LINE 官方帳號 @413vjwfv。</div>
+        </div>
+
+        <div class="signup-section-title" style="margin-top:20px;">主報名者資料</div>
+        <div class="field"><label for="fifty-name">姓名 *</label><input type="text" id="fifty-name"></div>
+        <div class="field"><label for="fifty-phone">手機 *</label><input type="tel" id="fifty-phone" placeholder="09xxxxxxxx"></div>
+        <div class="field"><label for="fifty-email">Email *</label><input type="email" id="fifty-email" placeholder="報名確認信會寄到這裡"></div>
+        <div class="field">
+          <label>飲食習慣 *</label>
+          <div class="radio-group">
+            <label><input type="radio" name="fifty-diet" value="葷食"> 葷食</label>
+            <label><input type="radio" name="fifty-diet" value="蛋奶素"> 蛋奶素</label>
+            <label><input type="radio" name="fifty-diet" value="全素"> 全素</label>
+          </div>
+        </div>
+        <div class="field"><label for="fifty-allergy">過敏或不吃的食物</label><input type="text" id="fifty-allergy" placeholder="沒有可不填"></div>
+        <div class="field"><label for="fifty-referrer">推薦人（中文全名）</label><input type="text" id="fifty-referrer" placeholder="誰邀請你來的？沒有可不填">
+          <div class="field-hint">※ 請填推薦人的中文全名，同一張報名表的同行者都算同一位推薦人。</div></div>
+
+        <div id="fifty-companions"></div>
+
+        <div class="signup-section-title" style="margin-top:20px;">活動全程記錄與肖像授權</div>
+        <div class="consent-intro">
+          這場得來不易的永續餐桌會，我們將全程記錄（攝影、錄影），未來也將投入相關的文化推廣活動與競賽投稿。誠摯拜託參加的每一位朋友，願意讓我們使用您在活動中的影像，一起把「永續料理餐桌」的理念分享出去 🙏
+          <span class="consent-sub">同行者的授權，請主報名者先代為詢問後一併勾選。</span>
+        </div>
+        <div class="field">
+          <label>是否同意本單位將您在活動中的肖像（照片、影片）用於文化推廣、競賽投稿及相關報導？ *</label>
+          <div class="radio-group">
+            <label><input type="radio" name="fifty-portrait" value="同意"> 同意</label>
+            <label><input type="radio" name="fifty-portrait" value="不同意"> 不同意</label>
+          </div>
+        </div>
+        <div class="field">
+          <label>是否願意在作品中標注您的姓名或社群帳號？ *</label>
+          <div class="radio-group">
+            <label><input type="radio" name="fifty-tag" value="願意" onchange="toggleFiftyTagName()"> 願意</label>
+            <label><input type="radio" name="fifty-tag" value="不願意" onchange="toggleFiftyTagName()"> 不願意</label>
+          </div>
+        </div>
+        <div class="field" id="fifty-tagname-field" style="display:none;">
+          <label for="fifty-tagname">希望標注的名稱或帳號</label>
+          <input type="text" id="fifty-tagname" placeholder="例：喵老師／IG @xxxx（可不填）">
+        </div>
+        <div class="field-hint" style="margin-top:-6px; margin-bottom:16px;">※ 選「不同意」也可以正常報名，影像中會做遮蔽處理，不會公開使用。</div>
+
+        <div class="field">
+          <label for="fifty-note">想對喵老師說的話／其他需求</label>
+          <textarea id="fifty-note" rows="3" placeholder="可不填"></textarea>
+        </div>
+
+        <div class="privacy-box">
+          本單位（好放心飲食行銷有限公司）依個人資料保護法蒐集、處理及利用您所提供之個人資料（姓名、手機、Email），僅用於「食藝餐桌・五十而豐」活動之聯繫、報名確認及會員貓幣累積，不會提供給第三方或用於其他用途。
+        </div>
+        <label class="agree-line"><input type="checkbox" id="fifty-privacy"> 我已閱讀並同意上述個人資料保護聲明 *</label>
+
+        <div class="fifty-total" id="fifty-total-box">請先勾選報名場次</div>
+
+        <button type="button" class="signup-btn" onclick="openFiftyCheckout()">前往確認金額</button>
+      </div>
+    </div>
+
+    <button type="button" class="panel-close" onclick="togglePanel('fifty')">▲ 收起五十而豐</button>
+  </div><!-- /panel-fifty -->
+
+  <!-- 五十而豐：活動詳情彈窗（海報＋說明卡片＋點我報名） -->
+  <div class="modal-overlay" id="fifty-detail-modal">
+    <div class="checkout-card fifty-detail-card">
+      <button type="button" class="modal-x" onclick="closeModal('fifty-detail-modal')" aria-label="關閉">×</button>
+
+      <div class="fifty-detail" id="fifty-detail-1207">
+        <img class="detail-poster" src="fifty/poster-1207.jpg" alt="12/7 人生回顧暨感恩餐會 海報">
+        <div class="info-card">
+          <div class="info-eyebrow">食藝餐桌・五十而豐</div>
+          <h4>人生回顧暨感恩餐會</h4>
+          <div class="info-sub">五十歲，回望來路，把幸福端上餐桌。</div>
+          <div class="info-sec">
+            <div class="info-h">活動資訊</div>
+            <div class="info-big">12月7日（一）18:00–20:45</div>
+            <p><b>地點</b>｜WAGA 最美餐具公司<br><b>地址</b>｜台北市信義區松德路65號12樓</p>
+          </div>
+          <div class="info-sec">
+            <div class="info-h">活動費用</div>
+            <p>以 20 人計，均攤活動費用約 <span class="info-price">$2,350／人</span></p>
+            <p>其中包含<b>花藝禮籃課程 $950</b>，可帶回一份精美作品，課程費不另計。</p>
+            <p class="info-gold">把餐桌上的美好，化成一份可以帶回家的心意。</p>
+          </div>
+          <div class="info-sec">
+            <div class="info-h">當晚體驗</div>
+            <p><b>餐具導覽</b>｜走進 WAGA 展示空間，感受高訂餐具與餐桌搭配的美學。</p>
+            <p><b>料理饗宴</b>｜獲獎廚師夥伴<b>親自掌廚</b>，端出五道式永續料理，分享食材故事與創作巧思。</p>
+            <p><b>花藝手作</b>｜由惟一老師帶領，將當季食材變成花材，完成自己的花藝禮籃。</p>
+          </div>
+          <div class="info-sec">
+            <div class="info-h">全程影像紀錄</div>
+            <p>邀請來自宜蘭的攝影團隊同學們<b>全程錄影</b>，留下料理、手作與好友相聚的美好紀錄。</p>
+          </div>
+        </div>
+        <div class="info-card">
+          <div class="info-eyebrow">食藝餐桌・五十而豐</div>
+          <h4>穿搭邀請與餐會的起心動念</h4>
+          <div class="info-sub">讓美好的相遇，繼續發生。</div>
+          <div class="info-sec">
+            <div class="info-h">Dress code｜奶油白 × 大地色</div>
+            <p><b>男生</b>｜白色或奶油白襯衫＋卡其色或咖啡色長褲，搭配皮鞋或樂福鞋。</p>
+            <p><b>女生</b>｜香檳色、米色洋裝；或奶油白上衣＋駝色、淺咖啡色裙子或長褲，搭配低跟鞋、平底包鞋或樂福鞋。</p>
+            <p><b>女生記得擦上美美的口紅，讓鏡頭留下氣色明亮、最有自信的自己！</b></p>
+            <p class="info-muted">以素面、優雅、舒服又好活動的款式為主，不必特別添購；請避免拖鞋與運動跑鞋。</p>
+          </div>
+          <div class="info-sec">
+            <div class="info-h">這場餐會的起心動念</div>
+            <p><b>五十歲，是回望，也是分享。</b></p>
+            <p>參加 SOGO 永續料理競賽後，我開始思考：永續，如何從料理走進日常？今年五十歲，我也想回望十八歲至今的心路歷程，與一路相遇的朋友分享這些年的努力與感謝。</p>
+            <p>我熱愛料理，喜歡美食、好食材與美美的餐具。當這些美好與花藝、朋友聚在同一張餐桌旁，就是圍繞在我們身邊的幸福氛圍。</p>
+            <p>於是，我與 WAGA 最美餐具公司執行長<b>嘉嘉</b>、資深花藝老師<b>惟一</b>，共同設計這場餐會，邀請一同參賽獲獎的廚師夥伴<b>親自掌廚</b>，端出最用心設計的餐點，和我的好朋友們分享。</p>
+            <p>這不只是我一個人的活動，而是集結各路好友的專長、資源與心意，才能成真；也需要願意來相聚、支持我們的你們。</p>
+            <p>誠摯邀你入席，品味料理、感受永續，把一路走來的感謝，化成一席豐盛。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="fifty-detail" id="fifty-detail-1219">
+        <img class="detail-poster" src="fifty/poster-1219.jpg" alt="12/19 50歲生日歡慶派對 海報">
+        <div class="info-card">
+          <div class="info-eyebrow">食藝餐桌・五十而豐</div>
+          <h4>50 歲生日歡慶派對</h4>
+          <div class="info-sub">五十而豐，讓美好繼續發生。</div>
+          <div class="info-sec">
+            <div class="info-h">活動資訊</div>
+            <div class="info-big">12月19日（六）18:20–21:45</div>
+            <p><b>地點</b>｜WAGA 最美餐具公司<br><b>地址</b>｜台北市信義區松德路65號12樓</p>
+          </div>
+          <div class="info-sec">
+            <div class="info-h">活動費用</div>
+            <p>以 22 人計，均攤活動費用約 <span class="info-price">$2,950／人</span></p>
+            <p>其中包含<b>花藝禮籃課程 $950</b>，可帶回一份精美作品，課程費不另計。</p>
+            <p class="info-gold">不一定要帶禮物來，但可以帶禮物回去！</p>
+          </div>
+          <div class="info-sec">
+            <div class="info-h">當晚安排</div>
+            <p><b>餐會</b>｜獲獎廚師設計五道式永續料理，搭配高訂餐具與餐桌美學。</p>
+            <p><b>手作</b>｜體驗「把食材變成花材」，完成自己的花藝禮籃作品。</p>
+            <p><b>下半場</b>｜美式卡拉OK × 雞尾酒派對，還有京珠姐與部落好酒。</p>
+            <p class="info-muted">歡迎帶堅果、鹹餅乾、洋芋片或紅酒分享，非必要準備。</p>
+          </div>
+          <div class="info-sec">
+            <div class="info-h">餐會結束後｜台北101聖誕美拍</div>
+            <p>一起到台北101留下聖誕美照；記得帶保暖外套，鞋子要好看又好走。</p>
+          </div>
+        </div>
+        <div class="info-card">
+          <div class="info-eyebrow">食藝餐桌・五十而豐</div>
+          <h4>穿搭邀請與相聚心意</h4>
+          <div class="info-sub">穿搭主題｜奶油白 × 大地色</div>
+          <div class="info-sec">
+            <div class="info-h">男生穿搭</div>
+            <p><b>上半身</b>｜白色或奶油白素面襯衫；可加米色西裝外套，不必打領帶。</p>
+            <p><b>下半身</b>｜卡其色或咖啡色長褲，剪裁俐落。</p>
+            <p><b>鞋子</b>｜咖啡色皮鞋或樂福鞋最推薦，簡約黑色皮鞋也可以。</p>
+            <p class="info-muted">請避免拖鞋、運動跑鞋與登山鞋。</p>
+          </div>
+          <div class="info-sec">
+            <div class="info-h">女生穿搭</div>
+            <p><b>服裝</b>｜香檳色或米色洋裝；或奶油白上衣，搭配駝色、淺咖啡色中長裙或寬褲。</p>
+            <p><b>鞋子</b>｜米色、裸色、咖啡色或淡金色的低跟鞋、平底包鞋或樂福鞋。</p>
+            <p><b>妝容</b>｜<b>記得擦上美美的口紅！</b>讓鏡頭留下氣色明亮、最有自信的自己。</p>
+            <p class="info-muted">不必特別添購，以素面、舒服、好活動的款式為主；避免拖地裙襬、寬大長袖、大圖案與螢光色。</p>
+          </div>
+          <div class="info-sec">
+            <div class="info-h">活動說明</div>
+            <p><b>今年的生日，對我來說特別有意義。</b></p>
+            <p>想分享這幾年在餐飲路上的努力，也謝謝這一年透過料理認識的朋友。這次，我想把大家聚在同一張餐桌旁。</p>
+            <p>與我一同參賽獲獎的廚師、支持「把食材變成花材」的資深花藝老師、最美餐具執行長（餐桌美學專家與場地主理人）、貓公部落主持第一把交椅——京珠姐，共同成就這場餐會。來自宜蘭的攝影團隊同學們，也會到場錄影。</p>
+            <p>活動能成真，需要夥伴的專長，也需要好朋友們到場支持。期待和你一起入席，為更豐盛的下半場舉杯。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="info-contact">報名洽詢｜LINE：@413vjwfv　聯絡電話｜0920-090-616</div>
+      <button type="button" class="signup-btn" onclick="goFiftySignup()">點我報名</button>
+    </div>
+  </div>
+
+  <!-- 五十而豐：確認金額彈窗 -->
+  <div class="modal-overlay" id="fifty-checkout-modal">
+    <div class="checkout-card">
+      <div class="checkout-title">確認報名金額與付款資訊</div>
+      <div class="event-summary-box" id="fifty-summary"></div>
+      <div class="bank-box">
+        <b>【銀行匯款帳戶】</b><br>
+        銀行名稱：008 華南銀行 永和分行<br>
+        戶名：好放心飲食行銷有限公司<br>
+        帳號：164101300006
+      </div>
+      <div class="policy-box">
+        • 活動費用為依人數<b>均攤的約略金額</b>。<br>
+        • 請先按下方「確認送出報名」，再匯款，匯款後請在 LINE 官方帳號（@413vjwfv）告知姓名與帳號末四碼。<br>
+        • 確認收到匯款後，每位參加者每場可得 <b>300 點貓幣</b>，依各自填寫的手機號碼存入會員資料。
+      </div>
+      <div class="policy-box">
+        <b>【取消與退費說明】</b><br>
+        • <b>活動前七日（不含當天）取消：</b>全額退費（扣除轉帳手續費）<br>
+        • <b>活動前五日（不含當天）取消：</b>退回 50%（扣除轉帳手續費）<br>
+        • <b>活動前三日（不含當天）取消：</b>退回 30%（扣除轉帳手續費）<br>
+        • <b>活動當天取消：</b>退回 15%（扣除轉帳手續費）
+      </div>
+      <button type="button" class="signup-btn" id="fifty-submit-btn" onclick="submitFifty()">確認送出報名</button>
+      <div id="fifty-after-submit" style="display:none; margin-top:12px; text-align:center;">
+        <div style="color:var(--wine-deep); font-weight:700; margin-bottom:10px;">✅ 報名已送出！確認信已寄到您的 Email。<br>匯款後請到 LINE 告知姓名與末四碼。</div>
+        <a class="signup-btn" style="display:block; text-decoration:none;" href="https://line.me/R/ti/p/@413vjwfv" target="_blank">💬 開啟 LINE 官方帳號</a>
+      </div>
+      <button type="button" class="panel-close" id="fifty-back-btn" onclick="closeModal('fifty-checkout-modal')">返回修改資料</button>
+    </div>
+  </div>
+
   <footer>
     © ESG 文化美學系列｜仕女小聚。All Rights Reserved.
   </footer>
@@ -1172,7 +1585,7 @@
     try {
       await liff.init({ liffId: LIFF_ID });
       if (!liff.isLoggedIn()) {
-        liff.login();
+        console.warn('未登入 LINE（一般瀏覽器開啟），不帶入 LINE 名稱');
         return;
       }
       const profile = await liff.getProfile();
@@ -1304,6 +1717,340 @@
         overlay.classList.remove('active');
       }
     });
+  });
+</script>
+<script>
+  // 活動選單展開／收起
+  function togglePanel(name, forceOpen) {
+    var panel = document.getElementById('panel-' + name);
+    var btn = document.getElementById('btn-' + name);
+    var open = forceOpen === true ? true : !panel.classList.contains('open');
+    panel.classList.toggle('open', open);
+    btn.classList.toggle('open', open);
+    if (!open) btn.scrollIntoView({behavior:'smooth', block:'center'});
+  }
+  // 導覽列「活動內容／購物車」點下去時，自動展開仕女小聚
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href="#event-details"], a[href="#signup-form"]');
+    if (a) togglePanel('salon', true);
+  });
+  document.addEventListener('DOMContentLoaded', function () {
+    if (location.hash === '#event-details' || location.hash === '#signup-form') togglePanel('salon', true);
+    if (location.hash === '#fifty') togglePanel('fifty', true);
+  });
+</script>
+<script>
+  // ══════════════════════════════════════
+  //  食藝餐桌・五十而豐（兩場共用一個報名系統）
+  // ══════════════════════════════════════
+  const FIFTY_WEBAPP_URL = 'https://script.google.com/macros/s/AKfycbx8HNbrgdH4EZvJaRGHC91FQ556INMQv7v2aR40u3EWEjPM67PjV09O-ewrbGMNj5KMBw/exec'; // 「食藝餐桌五十而豐後台」部署後的網址
+  const FIFTY_EVENT_ID = 'fifty50';
+  const FIFTY_SESSIONS = {
+    '1207': { label: '12/7（一）18:00–20:45 人生回顧暨感恩餐會', price: 2350 },
+    '1219': { label: '12/19（六）18:20–21:45 50歲生日歡慶派對', price: 2950 },
+  };
+  const FIFTY_POINTS_PER_SESSION = 300;
+
+  function closeModal(id) { document.getElementById(id).classList.remove('active'); }
+
+  let fiftyCurrent = '1207';
+  function openFiftyDetail(key) {
+    fiftyCurrent = key;
+    document.querySelectorAll('.fifty-detail').forEach(function (d) { d.classList.remove('show'); });
+    document.getElementById('fifty-detail-' + key).classList.add('show');
+    const m = document.getElementById('fifty-detail-modal');
+    m.classList.add('active');
+    m.querySelector('.checkout-card').scrollTop = 0;
+  }
+
+  function goFiftySignup() {
+    closeModal('fifty-detail-modal');
+    const box = document.querySelector('input[name="fifty-session"][value="' + fiftyCurrent + '"]');
+    if (box) box.checked = true;
+    document.getElementById('fifty-survey').style.display = 'none';
+    document.getElementById('fifty-signup').style.display = 'block';
+    updateFiftyTotal();
+    document.getElementById('fifty-signup').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function toggleFiftyTagName() {
+    const v = (document.querySelector('input[name="fifty-tag"]:checked') || {}).value;
+    document.getElementById('fifty-tagname-field').style.display = v === '願意' ? 'block' : 'none';
+  }
+
+  function updateFiftyCompanions() {
+    const count = Number(document.getElementById('fifty-count').value);
+    const wrap = document.getElementById('fifty-companions');
+    const old = getFiftyCompanions();
+    let html = '';
+    for (let i = 2; i <= count; i++) {
+      html += '<div class="sub-card" style="margin-top:16px;">' +
+        '<div class="signup-section-title" style="margin-bottom:12px;">同行者 ' + (i - 1) + '</div>' +
+        '<div class="field"><label>姓名 *</label><input type="text" class="fc-name"></div>' +
+        '<div class="field"><label>手機 *（貓幣存入此號碼的會員資料）</label><input type="tel" class="fc-phone" placeholder="09xxxxxxxx"></div>' +
+        '<div class="field" style="margin-bottom:0;"><label>飲食習慣 *</label><select class="fc-diet">' +
+        '<option value="">請選擇</option><option>葷食</option><option>蛋奶素</option><option>全素</option></select></div>' +
+        '<div class="field" style="margin:12px 0 0;"><label>過敏或不吃的食物</label><input type="text" class="fc-allergy" placeholder="沒有可不填"></div>' +
+        '</div>';
+    }
+    wrap.innerHTML = html;
+    wrap.querySelectorAll('.sub-card').forEach(function (card, i) {
+      if (!old[i]) return;
+      card.querySelector('.fc-name').value = old[i].name;
+      card.querySelector('.fc-phone').value = old[i].phone;
+      card.querySelector('.fc-diet').value = old[i].diet;
+      card.querySelector('.fc-allergy').value = old[i].allergy;
+    });
+  }
+
+  function getFiftyCompanions() {
+    return Array.from(document.querySelectorAll('#fifty-companions .sub-card')).map(function (c) {
+      return {
+        name: c.querySelector('.fc-name').value.trim(),
+        phone: c.querySelector('.fc-phone').value.trim(),
+        diet: c.querySelector('.fc-diet').value,
+        allergy: c.querySelector('.fc-allergy').value.trim(),
+      };
+    });
+  }
+
+  function getFiftySessions() {
+    return Array.from(document.querySelectorAll('input[name="fifty-session"]:checked')).map(function (b) { return b.value; });
+  }
+
+  function calcFifty() {
+    const sessions = getFiftySessions();
+    const count = Number(document.getElementById('fifty-count').value);
+    const perPerson = sessions.reduce(function (s, k) { return s + FIFTY_SESSIONS[k].price; }, 0);
+    return { sessions: sessions, count: count, total: perPerson * count, points: FIFTY_POINTS_PER_SESSION * sessions.length };
+  }
+
+  function updateFiftyTotal() {
+    const c = calcFifty();
+    const box = document.getElementById('fifty-total-box');
+    if (!c.sessions.length) { box.innerHTML = '請先勾選報名場次'; return; }
+    box.innerHTML = c.sessions.length + ' 場 × ' + c.count + ' 位，費用約 <b>$' + c.total.toLocaleString() + '</b><br>' +
+      '每位參加者可得貓幣 ' + c.points + ' 點（匯款確認後發放）';
+  }
+
+  function validateFifty() {
+    const c = calcFifty();
+    if (!c.sessions.length) return '請勾選報名場次';
+    const name = document.getElementById('fifty-name').value.trim();
+    const phone = document.getElementById('fifty-phone').value.trim();
+    const email = document.getElementById('fifty-email').value.trim();
+    if (!name) return '請填寫主報名者姓名';
+    if (!/^09\d{8}$/.test(phone.replace(/[-\s]/g, ''))) return '請填寫正確的手機號碼（09 開頭共 10 碼）';
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) return '請填寫正確的 Email';
+    if (!document.querySelector('input[name="fifty-diet"]:checked')) return '請選擇主報名者的飲食習慣';
+    const comps = getFiftyCompanions();
+    for (let i = 0; i < comps.length; i++) {
+      if (!comps[i].name) return '請填寫同行者 ' + (i + 1) + ' 的姓名';
+      if (!/^09\d{8}$/.test(comps[i].phone.replace(/[-\s]/g, ''))) return '請填寫同行者 ' + (i + 1) + ' 的手機號碼';
+      if (!comps[i].diet) return '請選擇同行者 ' + (i + 1) + ' 的飲食習慣';
+    }
+    if (!document.querySelector('input[name="fifty-portrait"]:checked')) return '請選擇是否同意肖像使用';
+    if (!document.querySelector('input[name="fifty-tag"]:checked')) return '請選擇是否願意被標注';
+    if (!document.getElementById('fifty-privacy').checked) return '請勾選同意個人資料保護聲明';
+    return '';
+  }
+
+  function openFiftyCheckout() {
+    const err = validateFifty();
+    if (err) { alert(err); return; }
+    const c = calcFifty();
+    document.getElementById('fifty-summary').innerHTML =
+      '<div><b>報名場次：</b><br>' + c.sessions.map(function (k) { return '・' + FIFTY_SESSIONS[k].label; }).join('<br>') + '</div>' +
+      '<div><b>報名人數：</b>' + c.count + ' 位</div>' +
+      (document.getElementById('fifty-referrer').value.trim() ? '<div><b>推薦人：</b>' + document.getElementById('fifty-referrer').value.trim() + '</div>' : '') +
+      '<div><b>貓幣回饋：</b>每位 ' + c.points + ' 點</div>' +
+      '<div style="margin-top:6px;"><b>費用合計（約）：</b><span class="price-highlight">$' + c.total.toLocaleString() + '</span></div>';
+    document.getElementById('fifty-submit-btn').style.display = 'block';
+    document.getElementById('fifty-submit-btn').disabled = false;
+    document.getElementById('fifty-submit-btn').innerText = '確認送出報名';
+    document.getElementById('fifty-after-submit').style.display = 'none';
+    document.getElementById('fifty-back-btn').style.display = 'block';
+    document.getElementById('fifty-checkout-modal').classList.add('active');
+  }
+
+  async function submitFifty() {
+    const btn = document.getElementById('fifty-submit-btn');
+    btn.innerText = '送出中…請稍候';
+    btn.disabled = true;
+    const c = calcFifty();
+    const payload = {
+      action: 'fiftyRegister',
+      eventId: FIFTY_EVENT_ID,
+      sessions: c.sessions,
+      count: c.count,
+      total: c.total,
+      pointsPerPerson: c.points,
+      lineId: (typeof lineUserId !== 'undefined' ? lineUserId : '') || '',
+      displayName: (typeof lineDisplayName !== 'undefined' ? lineDisplayName : '') || '',
+      name: document.getElementById('fifty-name').value.trim(),
+      phone: document.getElementById('fifty-phone').value.replace(/[-\s]/g, ''),
+      email: document.getElementById('fifty-email').value.trim(),
+      diet: document.querySelector('input[name="fifty-diet"]:checked').value,
+      allergy: document.getElementById('fifty-allergy').value.trim(),
+      companions: getFiftyCompanions().map(function (p) { p.phone = p.phone.replace(/[-\s]/g, ''); return p; }),
+      portraitConsent: document.querySelector('input[name="fifty-portrait"]:checked').value,
+      tagConsent: document.querySelector('input[name="fifty-tag"]:checked').value,
+      tagName: document.getElementById('fifty-tagname').value.trim(),
+      note: document.getElementById('fifty-note').value.trim(),
+      referrer: document.getElementById('fifty-referrer').value.replace(/\s+/g, ''),
+    };
+    try {
+      const res = await fetch(FIFTY_WEBAPP_URL, { method: 'POST', body: JSON.stringify(payload) });
+      const result = await res.json();
+      if (result.status === 'success') {
+        btn.style.display = 'none';
+        document.getElementById('fifty-back-btn').style.display = 'none';
+        document.getElementById('fifty-after-submit').style.display = 'block';
+      } else {
+        alert('報名送出時發生問題：' + (result.message || '請稍後再試或聯繫小編'));
+        btn.innerText = '確認送出報名';
+        btn.disabled = false;
+      }
+    } catch (err) {
+      console.error(err);
+      alert('網路連線異常，請稍後再試，或直接透過 LINE 官方帳號 @413vjwfv 聯繫小編完成報名。');
+      btn.innerText = '確認送出報名';
+      btn.disabled = false;
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    const n = document.getElementById('fifty-line-name');
+    const t = setInterval(function () {
+      if (typeof lineDisplayName !== 'undefined' && lineDisplayName) { n.value = lineDisplayName; clearInterval(t); }
+    }, 800);
+    setTimeout(function () { clearInterval(t); }, 15000);
+    document.querySelectorAll('#fifty-detail-modal, #fifty-checkout-modal').forEach(function (o) {
+      o.addEventListener('click', function (e) { if (e.target === o) o.classList.remove('active'); });
+    });
+  });
+</script>
+<script>
+  // ══════════════════════════════════════
+  //  五十而豐｜參加者滿意度調查（填寫送 80 貓幣）
+  //  菜名之後拿到菜單再填進 FIFTY_DISHES
+  // ══════════════════════════════════════
+  const FIFTY_DISHES = {
+    '1207': ['第一道', '第二道', '第三道', '第四道', '第五道'],
+    '1219': ['第一道', '第二道', '第三道', '第四道', '第五道'],
+  };
+  const STAR_LABELS = { 2: '普通', 3: '不錯', 4: '很棒', 5: '超讚' };
+  const svRatings = {};
+
+  function buildStars(el) {
+    const k = el.dataset.k;
+    el.innerHTML = [2, 3, 4, 5].map(function (n) {
+      return '<button type="button" data-v="' + n + '">' + '★'.repeat(n) + '<small>' + STAR_LABELS[n] + '</small></button>';
+    }).join('');
+    el.querySelectorAll('button').forEach(function (b) {
+      b.addEventListener('click', function () {
+        svRatings[k] = Number(b.dataset.v);
+        el.classList.remove('missing');
+        el.querySelectorAll('button').forEach(function (x) { x.classList.toggle('on', Number(x.dataset.v) <= svRatings[k] && Number(x.dataset.v) === svRatings[k]); });
+      });
+    });
+    if (svRatings[k]) el.querySelector('button[data-v="' + svRatings[k] + '"]').classList.add('on');
+  }
+
+  function getSvSession() { return (document.querySelector('input[name="sv-session"]:checked') || {}).value || ''; }
+
+  function renderSurveyDishes() {
+    const s = getSvSession();
+    const wrap = document.getElementById('sv-dishes');
+    document.getElementById('sv-party-block').style.display = s === '1219' ? 'block' : 'none';
+    if (!s) return;
+    const old = {};
+    wrap.querySelectorAll('.sv-fb').forEach(function (t) { old[t.id] = t.value; });
+    wrap.innerHTML = FIFTY_DISHES[s].map(function (name, i) {
+      const n = i + 1;
+      return '<div class="sv-block"><div class="sv-q">' + (n + 1) + '. ' + name + ' *</div>' +
+        '<div class="stars" data-k="dish' + n + '"></div>' +
+        '<textarea class="sv-fb" id="sv-fb' + n + '" rows="2" placeholder="給廚師的回饋（選填）：口味、蔬菜、擺盤…都可以寫"></textarea></div>';
+    }).join('');
+    wrap.querySelectorAll('.stars').forEach(buildStars);
+    Object.keys(old).forEach(function (id) { const t = document.getElementById(id); if (t) t.value = old[id]; });
+  }
+
+  function openFiftySurvey(session) {
+    document.getElementById('fifty-signup').style.display = 'none';
+    const box = document.getElementById('fifty-survey');
+    box.style.display = 'block';
+    if (session) {
+      const r = document.querySelector('input[name="sv-session"][value="' + session + '"]');
+      if (r) { r.checked = true; renderSurveyDishes(); }
+    }
+    box.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function submitFiftySurvey() {
+    const s = getSvSession();
+    const name = document.getElementById('sv-name').value.trim();
+    const phone = document.getElementById('sv-phone').value.replace(/[-\s]/g, '');
+    if (!s) { alert('請選擇參加場次'); return; }
+    if (!name) { alert('請填寫姓名'); return; }
+    if (!/^09\d{8}$/.test(phone)) { alert('請填寫正確的手機號碼（09 開頭共 10 碼），貓幣才存得進去'); return; }
+    const need = ['dish1', 'dish2', 'dish3', 'dish4', 'dish5', 'tour', 'table', 'flower', 'venue', 'overall', 'value'];
+    if (s === '1219') need.push('party');
+    const missing = need.filter(function (k) { return !svRatings[k]; });
+    if (missing.length) {
+      missing.forEach(function (k) { const el = document.querySelector('#fifty-survey .stars[data-k="' + k + '"]'); if (el) el.classList.add('missing'); });
+      const first = document.querySelector('#fifty-survey .stars.missing');
+      if (first) first.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      alert('還有 ' + missing.length + ' 題評分沒有選喔（紅框處）');
+      return;
+    }
+    const auth = (document.querySelector('input[name="sv-auth"]:checked') || {}).value;
+    if (!auth) { alert('請選擇第 20 題：是否同意使用你的回饋'); return; }
+
+    const v = function (id) { return document.getElementById(id).value.trim(); };
+    const payload = {
+      action: 'fiftySurvey', eventId: FIFTY_EVENT_ID, session: s, name: name, phone: phone,
+      lineId: (typeof lineUserId !== 'undefined' ? lineUserId : '') || '',
+      displayName: (typeof lineDisplayName !== 'undefined' ? lineDisplayName : '') || '',
+      dishNames: FIFTY_DISHES[s],
+      dishes: [1, 2, 3, 4, 5].map(function (n) { return { score: svRatings['dish' + n], feedback: v('sv-fb' + n) }; }),
+      tour: svRatings.tour, table: svRatings.table, flower: svRatings.flower, venue: svRatings.venue,
+      party: s === '1219' ? svRatings.party : '',
+      bestDish: v('sv-best-dish'), bestMoment: v('sv-best-moment'), person: v('sv-person'),
+      toHost: v('sv-host'), mood: v('sv-mood'),
+      overall: svRatings.overall, value: svRatings.value, wish: v('sv-wish'), auth: auth,
+    };
+    const btn = document.getElementById('sv-submit');
+    btn.disabled = true; btn.innerText = '送出中…請稍候';
+    fetch(FIFTY_WEBAPP_URL, { method: 'POST', body: JSON.stringify(payload) })
+      .then(function (r) { return r.json(); })
+      .then(function (res) {
+        if (res.status !== 'success') throw new Error(res.message || '送出失敗');
+        btn.style.display = 'none';
+        const done = document.getElementById('sv-done');
+        done.style.display = 'block';
+        let msg;
+        if (res.points > 0) msg = '已送你 ' + res.points + ' 點貓幣，目前共 ' + res.remain + ' 點。';
+        else if (res.reason === '本場已領過') msg = '這個手機號碼在本場已領過問卷貓幣，回饋已收到囉！';
+        else if (res.reason === '報名未匯款') msg = '回饋已收到！這場的匯款還沒確認，貓幣請洽小編（LINE @413vjwfv）。';
+        else msg = '回饋已收到！這支手機沒有對應到本場報名，貓幣請洽小編（LINE @413vjwfv）。';
+        done.innerHTML = '🌿 謝謝你的回饋！<br>' + msg;
+      })
+      .catch(function (err) {
+        console.error(err);
+        alert('送出時發生問題，請稍後再試，或透過 LINE 官方帳號 @413vjwfv 告訴我們。');
+        btn.disabled = false; btn.innerText = '送出問卷，領 80 點貓幣';
+      });
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('#fifty-survey .stars').forEach(buildStars);
+    // 掃 QR Code 直接開問卷：?survey=1207 或 ?survey=1219（或 #survey）
+    const q = new URLSearchParams(location.search).get('survey');
+    if (q !== null || location.hash === '#survey') {
+      togglePanel('fifty', true);
+      openFiftySurvey(q === '1207' || q === '1219' ? q : '');
+    }
   });
 </script>
 </body>
