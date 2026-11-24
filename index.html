@@ -1136,7 +1136,7 @@
         <div id="sd-donate" class="sd-pane" style="display:none;">
           <div class="consent-intro">
             不能到場，也能一起舉杯。斗內的你，會收到依金額準備的回饋禮，並加入 iDream 會員，<b>每 1 元累積 0.5 點貓幣</b>（確認匯款後發放）。<br>
-            <span class="sd-note">🐾 每一份回饋都附喵老師親筆感謝卡，以保冷袋包裝，活動後以 7-11 或全家店到店寄出，也可以自取（新北市永和區中山路一段66號）。</span>
+            <span class="sd-note">🐾 每一份回饋都會附上喵老師親筆感謝卡，活動後以 7-11 或全家店到店寄出，也可以自取（新北市永和區中山路一段66號）。</span>
           </div>
           <div class="tier-head"><span class="th-orn">❦</span> 選擇斗內方案 <span class="th-req">*</span></div>
           <div class="tier-hint">點方案看內容物，再按「我要這個方案」。可以選不只一個方案喔！</div>
@@ -2260,8 +2260,7 @@
   }
   function showTierGift(i) {
     const t = DONATE_TIERS_FE[i];
-    document.getElementById('gift-title').innerHTML = '$' + t.min.toLocaleString() + (i === DONATE_TIERS_FE.length - 1 ? ' 以上' : '') + '｜' + t.name +
-      '<div class="gift-sub">活動後 7-11／全家店到店寄出，或自取</div>';
+    document.getElementById('gift-title').innerHTML = '$' + t.min.toLocaleString() + (i === DONATE_TIERS_FE.length - 1 ? ' 以上' : '') + '｜' + t.name;
     document.getElementById('gift-body').innerHTML = t.sets.map(function (k) {
       const g = GIFT_SETS[k];
       return '<div class="gift-item"><b>' + g.t + '</b><br><span>' + g.d + (g.cold ? '，以保冷袋包裝' : '') + '</span></div>';
