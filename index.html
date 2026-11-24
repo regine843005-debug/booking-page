@@ -694,6 +694,10 @@
   .gift-item{padding:10px 0;border-bottom:1px solid #E6DAC4;font-size:14px;line-height:1.7;}
   .gift-item:last-child{border-bottom:none;}
   .gift-item span{color:var(--ink-soft);font-size:13.5px;}
+  .gift-isub{color:#8A6A3E;font-size:13px;margin-top:2px;}
+  .gift-list{margin:4px 0 0;padding-left:20px;color:var(--ink-soft);font-size:13.5px;line-height:1.75;}
+  .gift-note{margin-top:4px;color:var(--ink-soft);font-size:13px;}
+  .gift-cold{margin-top:4px;color:#3E6A80;font-size:12.5px;}
   .sd-done{margin-top:14px;text-align:center;color:var(--wine-deep);font-weight:700;line-height:1.8;}
   .sd-done .bank{font-weight:400;text-align:left;background:#EAE0CC;border:1px dashed #C9B79A;border-radius:6px;padding:12px;margin-top:10px;color:var(--ink);}
 .self-pick{background:#FBF6EC;border:1px solid #D9C7A3;border-radius:8px;padding:10px 12px;margin:4px 0 12px;font-size:13.5px;line-height:1.7;color:#5C3733;}
@@ -2208,22 +2212,25 @@
 <script>
   // ══ 贊助商與斗內 ══
   const GIFT_SETS = {
-    soup2:  { t: '🍲 暖心雞湯組', d: '濃厚雞白湯 300g ×2、法式吐司 ×1', cold: true },
-    curry2: { t: '🍲 咖哩雙湯組｜日式經典遇上老火慢淬雞湯', d: '濃厚雞白湯 300g、金華火腿老母雞湯 300g、日式經典濃咖哩醬（含雞肉泥）×2、法式吐司 ×1', cold: true },
-    curry3: { t: '🍲 咖哩三湯和牛組', d: '濃厚雞白湯 300g、金華火腿老母雞湯 300g、思慕雞湯 300g、日式經典濃咖哩醬（含雞肉泥）×2、法式吐司 ×1、澳洲和牛火鍋肉片 ×1', cold: true },
-    waga3:  { t: '🍽 WAGA 經典餐碗組（3 件）', d: '大盤、小盤、餐碗' },
-    waga7:  { t: '🍽 WAGA 一人份餐桌組（7 件）', d: '大盤、小盤、餐碗、筷、匙、叉、杯' },
-    waga14: { t: '🍽 WAGA 雙人份餐桌組（14 件）', d: '大盤、小盤、餐碗、筷、匙、叉、杯 各 2' },
-    tea:    { t: '🍵 花蓮舞鶴有機茶組', d: '2 款茶各 10 包' },
-    small:  { t: '🎁 常溫小禮一份', d: '喵老師挑選的常溫手作小禮' },
+    small:  { t: '🎁 常溫小禮一份', sub: '喵老師精選常溫手作小禮', items: [] },
+    soup2:  { t: '🍲 暖心雞湯組', cold: true, items: ['濃厚雞白湯 300g ×2', '特厚法式吐司 ×1（2 人份）'] },
+    curry2: { t: '🍛 老火雙湯咖哩組', sub: '日式經典遇上老火慢淬雞湯', cold: true,
+              items: ['濃厚雞白湯 300g ×1', '金華火腿老母雞湯 300g ×1', '日式經典濃咖哩醬（含雞肉與蔬果泥）400g ×2', '法式吐司 ×1（2 人份）'] },
+    curry3: { t: '🍛 老火三湯咖哩與和牛組', sub: '日式經典遇上老火慢淬雞湯與和牛', cold: true,
+              items: ['濃厚雞白湯 300g ×1', '金華火腿老母雞湯 300g ×1', '思慕雞湯 300g ×1', '日式經典濃咖哩醬（含雞肉與蔬果泥）400g ×2', '法式吐司 ×1（2 人份）', '澳洲和牛火鍋肉片 ×1'] },
+    waga3:  { t: '🍽 WAGA 經典餐碗組（3 件）', items: ['最美的大餐盤 ×1', '小餐盤 ×1', '餐碗 ×1'] },
+    waga7:  { t: '🍽 WAGA 一人份餐桌組（7 件）', items: ['最美的大餐盤 ×1', '小餐盤 ×1', '餐碗 ×1', '陶杯 ×1', '餐具 1 組（筷子、湯匙、叉子各 1）'] },
+    waga14: { t: '🍽 WAGA 雙人份餐桌組（14 件）', items: ['最美的大餐盤 ×2', '小餐盤 ×2', '餐碗 ×2', '陶杯 ×2', '餐具 2 組（筷子、湯匙、叉子各 2）'] },
+    tea:    { t: '🍵 花蓮舞鶴有機茶組', sub: '瑞穗名鶴茶園 2 款得獎茶',
+              items: ['經典蜜香紅茶 10 包', '經典蜜香綠茶 10 包'], note: '冷泡、熱泡、與牛奶直接煮都風味極佳，喜愛無糖者的奶茶必選。' },
   };
   const DONATE_TIERS_FE = [
     { min: 600, name: '一點心意・常溫小禮', short: '感謝卡＋常溫小禮', sets: ['small'] },
     { min: 2000, name: '一份心意・感謝禮', short: '暖心雞湯組', sets: ['soup2'] },
-    { min: 3000, name: '二味手作・食光禮', short: '咖哩雙湯組', sets: ['curry2'] },
-    { min: 4500, name: '三味豐收・餐桌禮', short: 'WAGA 餐碗組＋咖哩三湯和牛組', sets: ['waga3', 'curry3'] },
-    { min: 6000, name: '四方好友・典藏禮', short: 'WAGA 一人份餐桌組＋咖哩三湯和牛組', sets: ['waga7', 'curry3'] },
-    { min: 9000, name: '五十而豐・圓滿禮', short: 'WAGA 雙人份餐桌組＋舞鶴茶組＋咖哩三湯和牛組', sets: ['waga14', 'tea', 'curry3'] },
+    { min: 3000, name: '二味手作・食光禮', short: '老火雙湯咖哩組', sets: ['curry2'] },
+    { min: 4500, name: '三味豐收・餐桌禮', short: 'WAGA 經典餐碗組＋老火三湯咖哩與和牛組', sets: ['waga3', 'curry3'] },
+    { min: 6000, name: '四方好友・典藏禮', short: 'WAGA 一人份餐桌組＋老火三湯咖哩與和牛組', sets: ['waga7', 'curry3'] },
+    { min: 9000, name: '五十而豐・圓滿禮', short: 'WAGA 雙人份餐桌組＋舞鶴茶組＋老火三湯咖哩與和牛組', sets: ['waga14', 'tea', 'curry3'] },
   ];
   const SELF_PICK_ADDR = '新北市永和區中山路一段66號';
   document.addEventListener('change', function (e) {
@@ -2263,7 +2270,11 @@
     document.getElementById('gift-title').innerHTML = '$' + t.min.toLocaleString() + (i === DONATE_TIERS_FE.length - 1 ? ' 以上' : '') + '｜' + t.name;
     document.getElementById('gift-body').innerHTML = t.sets.map(function (k) {
       const g = GIFT_SETS[k];
-      return '<div class="gift-item"><b>' + g.t + '</b><br><span>' + g.d + (g.cold ? '，以保冷袋包裝' : '') + '</span></div>';
+      return '<div class="gift-item"><b>' + g.t + '</b>' +
+        (g.sub ? '<div class="gift-isub">' + g.sub + '</div>' : '') +
+        (g.items.length ? '<ul class="gift-list">' + g.items.map(function (x) { return '<li>' + x + '</li>'; }).join('') + '</ul>' : '') +
+        (g.note ? '<div class="gift-note">' + g.note + '</div>' : '') +
+        (g.cold ? '<div class="gift-cold">❄️ 冷凍配送，以保冷袋包裝</div>' : '') + '</div>';
     }).join('') + '<div class="gift-item"><b>✉️ 喵老師親筆感謝卡</b></div>';
     document.getElementById('gift-pick').onclick = function () { closeModal('gift-modal'); pickTier(i); };
     document.getElementById('gift-modal').classList.add('active');
