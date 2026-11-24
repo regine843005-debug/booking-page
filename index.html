@@ -1143,7 +1143,11 @@
               <label><input type="radio" name="dn-pickup" value="全家"> 全家</label>
             </div></div>
           <div class="field"><label for="dn-store">取貨門市名稱（＋店號） *</label><input type="text" id="dn-store" placeholder="例：松德門市 123456"></div>
-          <label class="agree-line"><input type="checkbox" id="dn-same" checked onchange="document.getElementById('dn-recv-box').style.display=this.checked?'none':'block'"> 收件人同斗內人</label>
+          <div class="field"><label>收件人資訊 *</label>
+            <div class="radio-group">
+              <label><input type="radio" name="dn-recv-type" value="same" onchange="toggleRecv()"> 同斗內者</label>
+              <label><input type="radio" name="dn-recv-type" value="other" onchange="toggleRecv()"> 非斗內者</label>
+            </div></div>
           <div id="dn-recv-box" style="display:none;">
             <div class="field"><label for="dn-recv">收件人姓名 *</label><input type="text" id="dn-recv"></div>
             <div class="field"><label for="dn-recv-phone">收件人手機 *</label><input type="tel" id="dn-recv-phone"></div>
@@ -2182,6 +2186,10 @@
     { min: 6000, name: '四方好友・典藏禮', items: ['🍽 WAGA 一人份餐桌組（7 件）', '🍲 咖哩三湯和牛組'] },
     { min: 9000, name: '五十而豐・圓滿禮', items: ['🍽 WAGA 雙人份餐桌組（14 件）', '🍵 花蓮舞鶴有機茶組', '🍲 咖哩三湯和牛組'] },
   ];
+  function toggleRecv() {
+    const v = (document.querySelector('input[name="dn-recv-type"]:checked') || {}).value;
+    document.getElementById('dn-recv-box').style.display = v === 'other' ? 'block' : 'none';
+  }
   function showSdTab(k) {
     ['sponsor', 'donate'].forEach(function (x) {
       document.getElementById('sd-' + x).style.display = x === k ? 'block' : 'none';
@@ -2255,13 +2263,15 @@
     const t = tierFor(amount);
     const phone = v('dn-phone').replace(/[-\s]/g, '');
     const pickup = (document.querySelector('input[name="dn-pickup"]:checked') || {}).value;
-    const same = document.getElementById('dn-same').checked;
+    const recvType = (document.querySelector('input[name="dn-recv-type"]:checked') || {}).value;
+    const same = recvType === 'same';
     if (!t) return alert('請選擇斗內方案，或輸入 $2,000 以上的金額');
     if (!v('dn-name')) return alert('請填寫姓名');
     if (!/^09\d{8}$/.test(phone)) return alert('請填寫正確的手機號碼');
     if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v('dn-email'))) return alert('請填寫正確的 Email');
     if (!pickup) return alert('請選擇 7-11 或全家');
     if (!v('dn-store')) return alert('請填寫取貨門市');
+    if (!recvType) return alert('請選擇收件人資訊：同斗內者或非斗內者');
     if (!same && (!v('dn-recv') || !/^09\d{8}$/.test(v('dn-recv-phone').replace(/[-\s]/g, '')))) return alert('請填寫收件人姓名與手機');
     if (!document.getElementById('dn-privacy').checked) return alert('請勾選同意個人資料使用');
     if (!confirm('確認斗內 $' + amount.toLocaleString() + '（' + t.name + '）？')) return;
