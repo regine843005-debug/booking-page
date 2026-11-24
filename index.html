@@ -659,14 +659,38 @@
   .sd-tab.on{background:var(--wine-deep);border-color:var(--wine-deep);color:#F3E3C6;}
   .sd-note{display:block;margin-top:6px;color:var(--ink-soft);font-size:12.5px;}
   .tier-list{display:flex;flex-direction:column;gap:8px;}
-  .tier{display:flex;align-items:stretch;width:100%;background:#fff;border:1px solid var(--line);border-radius:8px;padding:0;overflow:hidden;cursor:pointer;text-align:left;font-family:"Noto Serif TC",serif;color:var(--ink);}
-  .tier.on{border:2px solid var(--wine-deep);background:#FBF6EE;}
-  .tier .t-main{flex:1;min-width:0;display:flex;align-items:baseline;gap:7px;padding:11px 10px;white-space:nowrap;}
-  .tier .t-amt{font-size:16px;font-weight:700;color:var(--wine-deep);}
-  .tier .t-name{font-size:14.5px;font-weight:700;overflow:hidden;text-overflow:ellipsis;}
-  .tier .t-more{flex:0 0 auto;display:flex;align-items:center;justify-content:center;text-align:center;line-height:1.3;padding:4px 10px;background:var(--wine-deep);color:#F3E3C6;font-size:12.5px;font-weight:700;letter-spacing:0.03em;}
-  .tier.on .t-more{background:var(--gold);color:#fff;}
-  .gift-sub{font-size:13px;font-weight:400;color:var(--ink-soft);margin-top:4px;letter-spacing:0.03em;}
+  .tier-head{font-family:"Noto Serif TC",serif;font-size:16px;font-weight:700;color:var(--wine-deep);letter-spacing:0.08em;margin:6px 0 2px;}
+  .tier-head .th-orn{color:var(--gold);font-size:18px;margin-right:2px;}
+  .tier-head .th-req{color:var(--wine);}
+  .tier-hint{font-size:12.5px;color:var(--ink-soft);margin-bottom:10px;}
+  .tier{position:relative;display:flex;align-items:center;gap:8px;width:100%;border:none;border-radius:10px;padding:11px 12px 11px 16px;cursor:pointer;text-align:left;font-family:"Noto Serif TC",serif;background:var(--tbg);box-shadow:0 6px 14px -8px rgba(30,15,10,0.6);overflow:hidden;transition:transform .15s;}
+  .tier:active{transform:scale(0.985);}
+  .tier::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:linear-gradient(#E9CF97,#B8935A);}
+  .tier::after{content:"";position:absolute;inset:3px;border:1px solid rgba(233,207,151,0.28);border-radius:8px;pointer-events:none;}
+  .tier .t-main{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px;white-space:nowrap;position:relative;z-index:1;}
+  .tier .t-crown{font-size:14px;margin-right:4px;}
+  .tier .t-amt{font-size:17px;font-weight:700;color:#E9CF97;letter-spacing:0.04em;}
+  .tier .t-name{font-size:14px;font-weight:600;color:#F6EDE0;letter-spacing:0.06em;}
+  .tier .t-more{flex:0 0 auto;font-size:10.5px;color:#F6EDE0;border:1px solid rgba(246,237,224,0.55);border-radius:999px;padding:2px 8px;position:relative;z-index:1;letter-spacing:0.04em;opacity:0.9;}
+  .tier-0{--tbg:linear-gradient(110deg,#5B3A4A,#4A2E3C);}
+  .tier-1{--tbg:linear-gradient(110deg,#2F4A3A,#253D30);}
+  .tier-2{--tbg:linear-gradient(110deg,#6B2E3A,#58242F);}
+  .tier-3{--tbg:linear-gradient(110deg,#2E4552,#243843);}
+  .tier-4{--tbg:linear-gradient(110deg,#5A3E2B,#4A3222);}
+  .tier-5{--tbg:linear-gradient(110deg,#7A2236,#5E1928);}
+  .t-hearts{position:absolute;inset:0;pointer-events:none;z-index:0;}
+  .t-hearts i{position:absolute;font-style:normal;}
+  .t-hearts i:nth-child(1){right:104px;top:6px;font-size:15px;transform:rotate(-14deg);}
+  .t-hearts i:nth-child(2){right:88px;bottom:5px;font-size:12px;transform:rotate(12deg);}
+  .picked-list{display:flex;flex-direction:column;gap:8px;}
+  .picked{position:relative;display:flex;align-items:center;gap:8px;border-radius:10px;padding:10px 10px 10px 16px;font-family:"Noto Serif TC",serif;background:var(--tbg);overflow:hidden;box-shadow:0 6px 14px -8px rgba(30,15,10,0.6);}
+  .picked::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:linear-gradient(#E9CF97,#B8935A);}
+  .picked .p-check{color:#E9CF97;font-weight:700;}
+  .picked .p-amt{font-weight:700;color:#E9CF97;}
+  .picked .p-name{flex:1;font-size:14px;color:#F6EDE0;letter-spacing:0.04em;}
+  .picked .p-del{border:none;background:transparent;color:#F6EDE0;font-size:20px;line-height:1;cursor:pointer;width:auto;padding:0 4px;opacity:0.8;}
+  .add-plan{display:block;width:100%;margin:10px 0 0;background:transparent;border:1.5px dashed var(--gold);color:var(--wine-deep);border-radius:10px;padding:11px;font-family:"Noto Serif TC",serif;font-size:14px;font-weight:700;cursor:pointer;}
+  .tier-list{margin-top:4px;}
   .gift-item{padding:10px 0;border-bottom:1px solid #E6DAC4;font-size:14px;line-height:1.7;}
   .gift-item:last-child{border-bottom:none;}
   .gift-item span{color:var(--ink-soft);font-size:13.5px;}
@@ -1116,10 +1140,13 @@
             不能到場，也能一起舉杯。斗內的你，會收到依金額準備的回饋禮，並加入 iDream 會員，<b>每 1 元累積 0.5 點貓幣</b>（確認匯款後發放）。<br>
             <span class="sd-note">🐾 每一份回饋都附喵老師親筆感謝卡，以保冷袋包裝，活動後以 7-11 或全家店到店寄出。</span>
           </div>
-          <div class="sv-q" style="margin:4px 0 8px;">選擇斗內方案 *</div>
+          <div class="tier-head"><span class="th-orn">❦</span> 選擇斗內方案 <span class="th-req">*</span></div>
+          <div class="tier-hint">點方案看內容物，再按「我要這個方案」。可以選不只一個方案喔！</div>
+          <div class="picked-list" id="picked-list"></div>
+          <button type="button" class="add-plan" id="add-plan" style="display:none;" onclick="showTierList(true)">＋ 我想增加其他斗內方案</button>
           <div class="tier-list" id="tier-list"></div>
-          <div class="field" style="margin-top:12px;"><label for="dn-amount">斗內金額 *（可自訂，最低 $2,000）</label><input type="number" id="dn-amount" min="2000" step="100" inputmode="numeric" oninput="syncTierFromAmount()"></div>
-          <div class="fifty-total" id="dn-summary">請選擇方案或輸入金額</div>
+          <div class="field" style="margin-top:12px;"><label for="dn-extra">額外加碼（選填）</label><input type="number" id="dn-extra" min="0" step="100" inputmode="numeric" placeholder="想多支持一點，可以填在這裡" oninput="updateDonateSummary()"></div>
+          <div class="fifty-total" id="dn-summary">請先選擇斗內方案</div>
 
           <div class="signup-section-title" style="margin-top:20px;">斗內人資料</div>
           <div class="field"><label for="dn-name">姓名 *</label><input type="text" id="dn-name"></div>
@@ -2187,8 +2214,10 @@
     waga7:  { t: '🍽 WAGA 一人份餐桌組（7 件）', d: '大盤、小盤、餐碗、筷、匙、叉、杯' },
     waga14: { t: '🍽 WAGA 雙人份餐桌組（14 件）', d: '大盤、小盤、餐碗、筷、匙、叉、杯 各 2' },
     tea:    { t: '🍵 花蓮舞鶴有機茶組', d: '2 款茶各 10 包' },
+    small:  { t: '🎁 常溫小禮一份', d: '喵老師挑選的常溫手作小禮' },
   };
   const DONATE_TIERS_FE = [
+    { min: 600, name: '一點心意・常溫小禮', short: '感謝卡＋常溫小禮', sets: ['small'] },
     { min: 2000, name: '一份心意・感謝禮', short: '暖心雞湯組', sets: ['soup2'] },
     { min: 3000, name: '二味手作・食光禮', short: '咖哩雙湯組', sets: ['curry2'] },
     { min: 4500, name: '三味豐收・餐桌禮', short: 'WAGA 餐碗組＋咖哩三湯和牛組', sets: ['waga3', 'curry3'] },
@@ -2205,18 +2234,19 @@
       document.getElementById('sd-tab-' + x).classList.toggle('on', x === k);
     });
   }
-  function tierFor(amount) {
-    let hit = null;
-    DONATE_TIERS_FE.forEach(function (t) { if (amount >= t.min) hit = t; });
-    return hit;
-  }
+  const TIER_DECO = ['', '', '👑', '👑', '', 'hearts'];   // 3000、4500 王冠；9000 滿滿愛心
+  let pickedPlans = [];   // 已選方案（index，可重複選不同方案）
   function renderTiers() {
     const box = document.getElementById('tier-list');
     box.innerHTML = DONATE_TIERS_FE.map(function (t, i) {
-      return '<button type="button" class="tier" data-i="' + i + '" onclick="showTierGift(' + i + ')">' +
-        '<span class="t-main"><span class="t-amt">$' + t.min.toLocaleString() + (i === DONATE_TIERS_FE.length - 1 ? '+' : '') + '</span>' +
+      const top = i === DONATE_TIERS_FE.length - 1;
+      const hearts = TIER_DECO[i] === 'hearts'
+        ? '<span class="t-hearts" aria-hidden="true"><i>💗</i><i>💕</i></span>' : '';
+      return '<button type="button" class="tier tier-' + i + '" data-i="' + i + '" onclick="showTierGift(' + i + ')">' + hearts +
+        '<span class="t-main"><span class="t-amt">' + (TIER_DECO[i] === '👑' ? '<span class="t-crown">👑</span>' : '') +
+        '$' + t.min.toLocaleString() + (top ? ' 以上' : '') + '</span>' +
         '<span class="t-name">' + t.name + '</span></span>' +
-        '<span class="t-more">點選看<br>內容物</span></button>';
+        '<span class="t-more">點選看內容物 ›</span></button>';
     }).join('');
   }
   function showTierGift(i) {
@@ -2231,19 +2261,40 @@
     document.getElementById('gift-modal').classList.add('active');
   }
   function pickTier(i) {
-    document.getElementById('dn-amount').value = DONATE_TIERS_FE[i].min;
-    syncTierFromAmount();
-    document.getElementById('dn-summary').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    pickedPlans.push(i);
+    renderPicked();
+    showTierList(false);
+    updateDonateSummary();
+    document.getElementById('picked-list').scrollIntoView({ behavior: 'smooth', block: 'center' });
   }
-  function syncTierFromAmount() {
-    const amount = Math.floor(Number(document.getElementById('dn-amount').value) || 0);
-    const t = tierFor(amount);
-    document.querySelectorAll('#tier-list .tier').forEach(function (b) {
-      b.classList.toggle('on', t && DONATE_TIERS_FE[Number(b.dataset.i)] === t);
-    });
-    document.getElementById('dn-summary').innerHTML = t
-      ? '斗內 <b>$' + amount.toLocaleString() + '</b>｜回饋：' + t.name + '<br>確認匯款後送 <b>' + Math.floor(amount * 0.5).toLocaleString() + '</b> 點貓幣'
-      : (amount ? '斗內金額最低 $2,000' : '請選擇方案或輸入金額');
+  function removePlan(k) {
+    pickedPlans.splice(k, 1);
+    renderPicked();
+    if (!pickedPlans.length) showTierList(true);
+    updateDonateSummary();
+  }
+  function renderPicked() {
+    document.getElementById('picked-list').innerHTML = pickedPlans.map(function (i, k) {
+      const t = DONATE_TIERS_FE[i];
+      return '<div class="picked tier-' + i + '"><span class="p-check">✓</span><span class="p-amt">$' + t.min.toLocaleString() + '</span>' +
+        '<span class="p-name">' + t.name + '</span><button type="button" class="p-del" onclick="removePlan(' + k + ')" aria-label="移除">×</button></div>';
+    }).join('');
+  }
+  function showTierList(show) {
+    document.getElementById('tier-list').style.display = show ? 'flex' : 'none';
+    document.getElementById('add-plan').style.display = (!show && pickedPlans.length) ? 'block' : 'none';
+  }
+  function donateTotal() {
+    const extra = Math.max(0, Math.floor(Number(document.getElementById('dn-extra').value) || 0));
+    const base = pickedPlans.reduce(function (s, i) { return s + DONATE_TIERS_FE[i].min; }, 0);
+    return { base: base, extra: extra, total: base + extra };
+  }
+  function updateDonateSummary() {
+    const c = donateTotal();
+    document.getElementById('dn-summary').innerHTML = pickedPlans.length
+      ? '斗內合計 <b>$' + c.total.toLocaleString() + '</b>（' + pickedPlans.length + ' 個方案' + (c.extra ? '＋加碼 $' + c.extra.toLocaleString() : '') + '）' +
+        '<br>確認匯款後送 <b>' + Math.floor(c.total * 0.5).toLocaleString() + '</b> 點貓幣'
+      : '請先選擇斗內方案';
   }
   function openFiftySponsor() {
     document.getElementById('fifty-signup').style.display = 'none';
@@ -2281,13 +2332,13 @@
   }
   function submitDonation() {
     const v = function (id) { return document.getElementById(id).value.trim(); };
-    const amount = Math.floor(Number(v('dn-amount')) || 0);
-    const t = tierFor(amount);
+    const c = donateTotal();
+    const amount = c.total;
     const phone = v('dn-phone').replace(/[-\s]/g, '');
     const pickup = (document.querySelector('input[name="dn-pickup"]:checked') || {}).value;
     const recvType = (document.querySelector('input[name="dn-recv-type"]:checked') || {}).value;
     const same = recvType === 'same';
-    if (!t) return alert('請選擇斗內方案，或輸入 $2,000 以上的金額');
+    if (!pickedPlans.length) return alert('請先選擇斗內方案');
     if (!v('dn-name')) return alert('請填寫姓名');
     if (!/^09\d{8}$/.test(phone)) return alert('請填寫正確的手機號碼');
     if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v('dn-email'))) return alert('請填寫正確的 Email');
@@ -2296,10 +2347,10 @@
     if (!recvType) return alert('請選擇收件人資訊：同斗內者或非斗內者');
     if (!same && (!v('dn-recv') || !/^09\d{8}$/.test(v('dn-recv-phone').replace(/[-\s]/g, '')))) return alert('請填寫收件人姓名與手機');
     if (!document.getElementById('dn-privacy').checked) return alert('請勾選同意個人資料使用');
-    if (!confirm('確認斗內 $' + amount.toLocaleString() + '（' + t.name + '）？')) return;
+    if (!confirm('確認斗內 $' + amount.toLocaleString() + '（' + pickedPlans.map(function (i) { return DONATE_TIERS_FE[i].name; }).join('、') + '）？')) return;
     const btn = document.getElementById('dn-submit'); btn.disabled = true; btn.innerText = '送出中…';
     const li = lineInfo();
-    postFifty({ action: 'fiftyDonate', amount: amount, name: v('dn-name'), phone: phone, email: v('dn-email'),
+    postFifty({ action: 'fiftyDonate', amount: amount, plans: pickedPlans.map(function (i) { return DONATE_TIERS_FE[i].min; }), extra: c.extra, name: v('dn-name'), phone: phone, email: v('dn-email'),
       pickup: pickup, store: v('dn-store'), receiver: same ? '' : v('dn-recv'),
       receiverPhone: same ? '' : v('dn-recv-phone').replace(/[-\s]/g, ''), note: v('dn-note'),
       lineId: li.lineId, displayName: li.displayName })
