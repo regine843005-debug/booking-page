@@ -659,14 +659,14 @@
   .sd-tab.on{background:var(--wine-deep);border-color:var(--wine-deep);color:#F3E3C6;}
   .sd-note{display:block;margin-top:6px;color:var(--ink-soft);font-size:12.5px;}
   .tier-list{display:flex;flex-direction:column;gap:8px;}
-  .tier{display:flex;align-items:center;gap:8px;width:100%;background:#fff;border:1px solid var(--line);border-radius:8px;padding:8px 12px;cursor:pointer;text-align:left;font-family:"Noto Serif TC",serif;color:var(--ink);}
-  .tier.on{border:2px solid var(--wine-deep);background:#FBF6EE;padding:7px 11px;}
-  .tier .t-main{flex:1;min-width:0;display:flex;flex-direction:column;gap:1px;}
-  .tier .t-line{display:flex;align-items:baseline;gap:8px;white-space:nowrap;}
+  .tier{display:flex;align-items:stretch;width:100%;background:#fff;border:1px solid var(--line);border-radius:8px;padding:0;overflow:hidden;cursor:pointer;text-align:left;font-family:"Noto Serif TC",serif;color:var(--ink);}
+  .tier.on{border:2px solid var(--wine-deep);background:#FBF6EE;}
+  .tier .t-main{flex:1;min-width:0;display:flex;align-items:baseline;gap:7px;padding:11px 10px;white-space:nowrap;}
   .tier .t-amt{font-size:16px;font-weight:700;color:var(--wine-deep);}
   .tier .t-name{font-size:14.5px;font-weight:700;overflow:hidden;text-overflow:ellipsis;}
-  .tier .t-items{font-size:12px;color:var(--ink-soft);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-  .tier .t-more{flex:0 0 auto;font-size:12px;color:var(--gold);font-weight:600;}
+  .tier .t-more{flex:0 0 auto;display:flex;align-items:center;justify-content:center;text-align:center;line-height:1.3;padding:4px 10px;background:var(--wine-deep);color:#F3E3C6;font-size:12.5px;font-weight:700;letter-spacing:0.03em;}
+  .tier.on .t-more{background:var(--gold);color:#fff;}
+  .gift-sub{font-size:13px;font-weight:400;color:var(--ink-soft);margin-top:4px;letter-spacing:0.03em;}
   .gift-item{padding:10px 0;border-bottom:1px solid #E6DAC4;font-size:14px;line-height:1.7;}
   .gift-item:last-child{border-bottom:none;}
   .gift-item span{color:var(--ink-soft);font-size:13.5px;}
@@ -2180,9 +2180,9 @@
 <script>
   // ══ 贊助商與斗內 ══
   const GIFT_SETS = {
-    soup2:  { t: '🍲 暖心雞湯組', d: '濃厚雞白湯 300g ×2、法式吐司 ×1' },
-    curry2: { t: '🍲 咖哩雙湯組｜日式經典遇上老火慢淬雞湯', d: '濃厚雞白湯 300g、金華火腿老母雞湯 300g、日式經典濃咖哩醬（含雞肉泥）×2、法式吐司 ×1' },
-    curry3: { t: '🍲 咖哩三湯和牛組', d: '濃厚雞白湯 300g、金華火腿老母雞湯 300g、思慕雞湯 300g、日式經典濃咖哩醬（含雞肉泥）×2、法式吐司 ×1、澳洲和牛火鍋肉片 ×1' },
+    soup2:  { t: '🍲 暖心雞湯組', d: '濃厚雞白湯 300g ×2、法式吐司 ×1', cold: true },
+    curry2: { t: '🍲 咖哩雙湯組｜日式經典遇上老火慢淬雞湯', d: '濃厚雞白湯 300g、金華火腿老母雞湯 300g、日式經典濃咖哩醬（含雞肉泥）×2、法式吐司 ×1', cold: true },
+    curry3: { t: '🍲 咖哩三湯和牛組', d: '濃厚雞白湯 300g、金華火腿老母雞湯 300g、思慕雞湯 300g、日式經典濃咖哩醬（含雞肉泥）×2、法式吐司 ×1、澳洲和牛火鍋肉片 ×1', cold: true },
     waga3:  { t: '🍽 WAGA 經典餐碗組（3 件）', d: '大盤、小盤、餐碗' },
     waga7:  { t: '🍽 WAGA 一人份餐桌組（7 件）', d: '大盤、小盤、餐碗、筷、匙、叉、杯' },
     waga14: { t: '🍽 WAGA 雙人份餐桌組（14 件）', d: '大盤、小盤、餐碗、筷、匙、叉、杯 各 2' },
@@ -2214,18 +2214,19 @@
     const box = document.getElementById('tier-list');
     box.innerHTML = DONATE_TIERS_FE.map(function (t, i) {
       return '<button type="button" class="tier" data-i="' + i + '" onclick="showTierGift(' + i + ')">' +
-        '<span class="t-main"><span class="t-line"><span class="t-amt">$' + t.min.toLocaleString() + (i === DONATE_TIERS_FE.length - 1 ? '+' : '') + '</span>' +
+        '<span class="t-main"><span class="t-amt">$' + t.min.toLocaleString() + (i === DONATE_TIERS_FE.length - 1 ? '+' : '') + '</span>' +
         '<span class="t-name">' + t.name + '</span></span>' +
-        '<span class="t-items">' + t.short + '</span></span>' +
-        '<span class="t-more">內容物 ›</span></button>';
+        '<span class="t-more">點選看<br>內容物</span></button>';
     }).join('');
   }
   function showTierGift(i) {
     const t = DONATE_TIERS_FE[i];
-    document.getElementById('gift-title').innerHTML = '$' + t.min.toLocaleString() + (i === DONATE_TIERS_FE.length - 1 ? ' 以上' : '') + '｜' + t.name;
+    document.getElementById('gift-title').innerHTML = '$' + t.min.toLocaleString() + (i === DONATE_TIERS_FE.length - 1 ? ' 以上' : '') + '｜' + t.name +
+      '<div class="gift-sub">活動後 7-11／全家店到店寄出</div>';
     document.getElementById('gift-body').innerHTML = t.sets.map(function (k) {
-      return '<div class="gift-item"><b>' + GIFT_SETS[k].t + '</b><br><span>' + GIFT_SETS[k].d + '</span></div>';
-    }).join('') + '<div class="gift-item"><b>✉️ 喵老師親筆感謝卡</b><br><span>每一份都有，以保冷袋包裝，活動後 7-11／全家店到店寄出</span></div>';
+      const g = GIFT_SETS[k];
+      return '<div class="gift-item"><b>' + g.t + '</b><br><span>' + g.d + (g.cold ? '，以保冷袋包裝' : '') + '</span></div>';
+    }).join('') + '<div class="gift-item"><b>✉️ 喵老師親筆感謝卡</b></div>';
     document.getElementById('gift-pick').onclick = function () { closeModal('gift-modal'); pickTier(i); };
     document.getElementById('gift-modal').classList.add('active');
   }
