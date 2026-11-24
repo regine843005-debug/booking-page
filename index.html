@@ -659,15 +659,18 @@
   .sd-tab.on{background:var(--wine-deep);border-color:var(--wine-deep);color:#F3E3C6;}
   .sd-note{display:block;margin-top:6px;color:var(--ink-soft);font-size:12.5px;}
   .tier-list{display:flex;flex-direction:column;gap:8px;}
-  .tier{display:block;width:100%;text-align:left;background:#fff;border:1px solid var(--line);border-radius:8px;padding:11px 14px;cursor:pointer;font-family:"Noto Serif TC",serif;color:var(--ink);}
-  .tier.on{border:2px solid var(--wine-deep);background:#FBF6EE;padding:10px 13px;}
-  .tier .t-top{display:flex;align-items:baseline;gap:10px;}
-  .tier .t-amt{font-size:17px;font-weight:700;color:var(--wine-deep);white-space:nowrap;}
+  .tier{display:flex;align-items:stretch;background:#fff;border:1px solid var(--line);border-radius:8px;overflow:hidden;}
+  .tier.on{border:2px solid var(--wine-deep);background:#FBF6EE;}
+  .tier .t-info{flex:1;min-width:0;display:flex;flex-direction:column;align-items:flex-start;gap:2px;background:transparent;border:none;text-align:left;padding:10px 12px;cursor:pointer;font-family:"Noto Serif TC",serif;color:var(--ink);}
+  .tier .t-amt{font-size:17px;font-weight:700;color:var(--wine-deep);}
   .tier .t-name{font-size:15px;font-weight:700;}
-  .tier .t-items{margin-top:4px;font-size:13px;line-height:1.7;color:var(--ink-soft);}
-  .tier-detail{margin-top:10px;font-size:13px;color:var(--ink-soft);}
-  .tier-detail summary{cursor:pointer;color:var(--wine);font-weight:600;}
-  .tier-detail ul{margin:8px 0 0 18px;line-height:1.8;}
+  .tier .t-items{font-size:12.5px;color:var(--ink-soft);line-height:1.5;}
+  .tier .t-more{font-size:12px;color:var(--gold);font-weight:600;margin-top:2px;}
+  .tier .t-pick{flex:0 0 86px;border:none;border-left:1px solid var(--line);background:var(--wine-deep);color:#F3E3C6;font-family:"Noto Serif TC",serif;font-size:13.5px;font-weight:700;line-height:1.4;cursor:pointer;}
+  .tier.on .t-pick{background:var(--gold);color:#fff;}
+  .gift-item{padding:10px 0;border-bottom:1px solid #E6DAC4;font-size:14px;line-height:1.7;}
+  .gift-item:last-child{border-bottom:none;}
+  .gift-item span{color:var(--ink-soft);font-size:13.5px;}
   .sd-done{margin-top:14px;text-align:center;color:var(--wine-deep);font-weight:700;line-height:1.8;}
   .sd-done .bank{font-weight:400;text-align:left;background:#EAE0CC;border:1px dashed #C9B79A;border-radius:6px;padding:12px;margin-top:10px;color:var(--ink);}
 </style>
@@ -1116,18 +1119,6 @@
           </div>
           <div class="sv-q" style="margin:4px 0 8px;">選擇斗內方案 *</div>
           <div class="tier-list" id="tier-list"></div>
-          <details class="tier-detail">
-            <summary>看內容明細</summary>
-            <ul>
-              <li><b>暖心雞湯組</b>：濃厚雞白湯 300g ×2、法式吐司 ×1</li>
-              <li><b>咖哩雙湯組</b>｜日式經典遇上老火慢淬雞湯：濃厚雞白湯 300g、金華火腿老母雞湯 300g、日式經典濃咖哩醬（含雞肉泥）×2、法式吐司 ×1</li>
-              <li><b>咖哩三湯和牛組</b>：濃厚雞白湯 300g、金華火腿老母雞湯 300g、思慕雞湯 300g、日式經典濃咖哩醬（含雞肉泥）×2、法式吐司 ×1、澳洲和牛火鍋肉片 ×1</li>
-              <li><b>WAGA 經典餐碗組（3 件）</b>：大盤、小盤、餐碗</li>
-              <li><b>WAGA 一人份餐桌組（7 件）</b>：大盤、小盤、餐碗、筷、匙、叉、杯</li>
-              <li><b>WAGA 雙人份餐桌組（14 件）</b>：上面 7 件各 2</li>
-              <li><b>花蓮舞鶴有機茶組</b>：2 款茶各 10 包</li>
-            </ul>
-          </details>
           <div class="field" style="margin-top:12px;"><label for="dn-amount">斗內金額 *（可自訂，最低 $2,000）</label><input type="number" id="dn-amount" min="2000" step="100" inputmode="numeric" oninput="syncTierFromAmount()"></div>
           <div class="fifty-total" id="dn-summary">請選擇方案或輸入金額</div>
 
@@ -1409,6 +1400,16 @@
 
       <div class="info-contact">報名洽詢｜LINE：@413vjwfv　聯絡電話｜0920-090-616</div>
       <button type="button" class="signup-btn" onclick="goFiftySignup()">點我報名</button>
+    </div>
+  </div>
+
+  <!-- 斗內方案：內容物說明 -->
+  <div class="modal-overlay" id="gift-modal" onclick="if(event.target===this)closeModal('gift-modal')">
+    <div class="checkout-card">
+      <div class="checkout-title" id="gift-title"></div>
+      <div id="gift-body"></div>
+      <button type="button" class="signup-btn" id="gift-pick" style="margin-top:14px;">我要這個方案</button>
+      <button type="button" class="panel-close" onclick="closeModal('gift-modal')">關閉</button>
     </div>
   </div>
 
@@ -2179,12 +2180,21 @@
 </script>
 <script>
   // ══ 贊助商與斗內 ══
+  const GIFT_SETS = {
+    soup2:  { t: '🍲 暖心雞湯組', d: '濃厚雞白湯 300g ×2、法式吐司 ×1' },
+    curry2: { t: '🍲 咖哩雙湯組｜日式經典遇上老火慢淬雞湯', d: '濃厚雞白湯 300g、金華火腿老母雞湯 300g、日式經典濃咖哩醬（含雞肉泥）×2、法式吐司 ×1' },
+    curry3: { t: '🍲 咖哩三湯和牛組', d: '濃厚雞白湯 300g、金華火腿老母雞湯 300g、思慕雞湯 300g、日式經典濃咖哩醬（含雞肉泥）×2、法式吐司 ×1、澳洲和牛火鍋肉片 ×1' },
+    waga3:  { t: '🍽 WAGA 經典餐碗組（3 件）', d: '大盤、小盤、餐碗' },
+    waga7:  { t: '🍽 WAGA 一人份餐桌組（7 件）', d: '大盤、小盤、餐碗、筷、匙、叉、杯' },
+    waga14: { t: '🍽 WAGA 雙人份餐桌組（14 件）', d: '大盤、小盤、餐碗、筷、匙、叉、杯 各 2' },
+    tea:    { t: '🍵 花蓮舞鶴有機茶組', d: '2 款茶各 10 包' },
+  };
   const DONATE_TIERS_FE = [
-    { min: 2000, name: '一份心意・感謝禮', items: ['🍲 暖心雞湯組'] },
-    { min: 3000, name: '二味手作・食光禮', items: ['🍲 咖哩雙湯組'] },
-    { min: 4500, name: '三味豐收・餐桌禮', items: ['🍽 WAGA 經典餐碗組（3 件）', '🍲 咖哩三湯和牛組'] },
-    { min: 6000, name: '四方好友・典藏禮', items: ['🍽 WAGA 一人份餐桌組（7 件）', '🍲 咖哩三湯和牛組'] },
-    { min: 9000, name: '五十而豐・圓滿禮', items: ['🍽 WAGA 雙人份餐桌組（14 件）', '🍵 花蓮舞鶴有機茶組', '🍲 咖哩三湯和牛組'] },
+    { min: 2000, name: '一份心意・感謝禮', short: '暖心雞湯組', sets: ['soup2'] },
+    { min: 3000, name: '二味手作・食光禮', short: '咖哩雙湯組', sets: ['curry2'] },
+    { min: 4500, name: '三味豐收・餐桌禮', short: 'WAGA 餐碗組＋咖哩三湯和牛組', sets: ['waga3', 'curry3'] },
+    { min: 6000, name: '四方好友・典藏禮', short: 'WAGA 一人份餐桌組＋咖哩三湯和牛組', sets: ['waga7', 'curry3'] },
+    { min: 9000, name: '五十而豐・圓滿禮', short: 'WAGA 雙人份餐桌組＋舞鶴茶組＋咖哩三湯和牛組', sets: ['waga14', 'tea', 'curry3'] },
   ];
   function toggleRecv() {
     const v = (document.querySelector('input[name="dn-recv-type"]:checked') || {}).value;
@@ -2204,14 +2214,28 @@
   function renderTiers() {
     const box = document.getElementById('tier-list');
     box.innerHTML = DONATE_TIERS_FE.map(function (t, i) {
-      return '<button type="button" class="tier" data-i="' + i + '" onclick="pickTier(' + i + ')">' +
-        '<div class="t-top"><span class="t-amt">$' + t.min.toLocaleString() + (i === DONATE_TIERS_FE.length - 1 ? ' 以上' : '') + '</span>' +
-        '<span class="t-name">' + t.name + '</span></div><div class="t-items">' + t.items.join('<br>') + '</div></button>';
+      return '<div class="tier" data-i="' + i + '">' +
+        '<button type="button" class="t-info" onclick="showTierGift(' + i + ')">' +
+        '<span class="t-amt">$' + t.min.toLocaleString() + (i === DONATE_TIERS_FE.length - 1 ? ' 以上' : '') + '</span>' +
+        '<span class="t-name">' + t.name + '</span>' +
+        '<span class="t-items">' + t.short + '</span>' +
+        '<span class="t-more">點選看內容物 ›</span></button>' +
+        '<button type="button" class="t-pick" onclick="pickTier(' + i + ')">我要<br>這個方案</button></div>';
     }).join('');
+  }
+  function showTierGift(i) {
+    const t = DONATE_TIERS_FE[i];
+    document.getElementById('gift-title').innerHTML = '$' + t.min.toLocaleString() + (i === DONATE_TIERS_FE.length - 1 ? ' 以上' : '') + '｜' + t.name;
+    document.getElementById('gift-body').innerHTML = t.sets.map(function (k) {
+      return '<div class="gift-item"><b>' + GIFT_SETS[k].t + '</b><br><span>' + GIFT_SETS[k].d + '</span></div>';
+    }).join('') + '<div class="gift-item"><b>✉️ 喵老師親筆感謝卡</b><br><span>每一份都有，以保冷袋包裝，活動後 7-11／全家店到店寄出</span></div>';
+    document.getElementById('gift-pick').onclick = function () { closeModal('gift-modal'); pickTier(i); };
+    document.getElementById('gift-modal').classList.add('active');
   }
   function pickTier(i) {
     document.getElementById('dn-amount').value = DONATE_TIERS_FE[i].min;
     syncTierFromAmount();
+    document.getElementById('dn-summary').scrollIntoView({ behavior: 'smooth', block: 'center' });
   }
   function syncTierFromAmount() {
     const amount = Math.floor(Number(document.getElementById('dn-amount').value) || 0);
