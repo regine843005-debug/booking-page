@@ -1488,7 +1488,7 @@
 
     <div class="bank-box" style="font-size:13px; margin:10px 0;">
       <div style="font-weight:700; color:var(--wine-deep); margin-bottom:4px;">【貓幣使用與累積說明】</div>
-      • 每位參加者最多可獲得 1,050 點貓幣。<br>
+      • 請從 LINE 官方帳號（@413vjwfv）的選單開啟本頁查詢；查不到時可輸入報名時的手機號碼。<br>
       • 貓幣依照各自填寫的電話號碼，分別累積到每個人自己的會員帳號（不限於主報名者本人）。<br>
       • 貓幣可用於後續小聚活動折抵或精選禮品兌換。
     </div>
@@ -1644,39 +1644,40 @@
   async function openMemberPointsModal() {
     document.getElementById('member-points-modal').classList.add('active');
     const content = document.getElementById('member-points-content');
+    if (!lineUserId) { showPhoneLookup_(''); return; }
     content.innerHTML = '<div style="text-align:center; color:var(--ink-soft);">查詢中…</div>';
-
-    if (!lineUserId) {
-      content.innerHTML = '<div style="text-align:center; color:var(--ink-soft);">請在 LINE 內開啟本頁面才能查詢會員點數</div>';
-      return;
-    }
-
+    const data = await memberLookup_({ lineId: lineUserId });
+    if (data && data.exists) return showMemberResult_(data);
+    showPhoneLookup_(data ? '' : '查詢失敗，請稍後再試');
+  }
+  async function memberLookup_(q) {
     try {
-      const res = await fetch(WEBAPP_URL, {
-        method: 'POST',
-        body: JSON.stringify({ action: 'checkMember', lineId: lineUserId }),
-      });
-      const data = await res.json();
-
-      if (!data.exists) {
-        content.innerHTML = '<div style="text-align:center; color:var(--ink-soft);">尚未查詢到會員資料，完成第一次報名或購物後即可累積點數</div>';
-        return;
-      }
-
-      const phoneStr = data.phone ? data.phone.toString() : '';
-      const maskedPhone = phoneStr.length >= 6
-        ? phoneStr.slice(0, 4) + '**' + phoneStr.slice(6)
-        : (phoneStr || '－');
-
-      content.innerHTML = `
-        <div><b>會員姓名：</b>${data.name || data.displayName || '－'}</div>
-        <div><b>綁定電話：</b>${maskedPhone}</div>
-        <div><b>目前累積貓幣：</b><span class="price-highlight">${data.remainPoints || 0} 點</span></div>
-      `;
-    } catch (err) {
-      content.innerHTML = '<div style="text-align:center; color:var(--wine);">查詢失敗，請稍後再試</div>';
-      console.error(err);
-    }
+      const res = await fetch(FIFTY_WEBAPP_URL, { method: 'POST',
+        body: JSON.stringify(Object.assign({ action: 'fiftyMemberLookup' }, q)) });
+      return await res.json();
+    } catch (err) { console.error(err); return null; }
+  }
+  function showMemberResult_(data) {
+    document.getElementById('member-points-content').innerHTML =
+      '<div><b>會員姓名：</b>' + (data.name || '－') + '</div>' +
+      '<div><b>綁定電話：</b>' + (data.phone || '－') + '</div>' +
+      '<div><b>目前累積貓幣：</b><span class="price-highlight">' + (data.remainPoints || 0) + ' 點</span></div>';
+  }
+  function showPhoneLookup_(msg) {
+    document.getElementById('member-points-content').innerHTML =
+      (msg ? '<div style="color:var(--wine); margin-bottom:6px;">' + msg + '</div>' : '') +
+      '<div style="color:var(--ink-soft); margin-bottom:8px;">' + (lineUserId ? '這個 LINE 帳號還沒綁定會員，' : '') + '請輸入報名或購物時填寫的手機號碼：</div>' +
+      '<div style="display:flex; gap:8px;"><input type="tel" id="mp-phone" placeholder="09xxxxxxxx" style="flex:1;">' +
+      '<button type="button" class="signup-btn" style="width:auto; margin:0; padding:8px 16px;" onclick="phoneLookup_()">查詢</button></div>';
+  }
+  async function phoneLookup_() {
+    const phone = document.getElementById('mp-phone').value.replace(/[-\s]/g, '');
+    if (!/^09\d{8}$/.test(phone)) return alert('請輸入正確的手機號碼');
+    const content = document.getElementById('member-points-content');
+    content.innerHTML = '<div style="text-align:center; color:var(--ink-soft);">查詢中…</div>';
+    const data = await memberLookup_({ phone: phone, lineId: lineUserId || '' });
+    if (data && data.exists) return showMemberResult_(data);
+    showPhoneLookup_(data ? '查不到這支手機的會員資料，完成第一次報名或購物後就會建立。' : '查詢失敗，請稍後再試');
   }
 
   function closeMemberPointsModal() {
