@@ -652,6 +652,24 @@
   .stars button.on small{color:#F4EDE1;}
   .stars.missing button{border-color:#C0392B;}
   .sv-fb{margin-top:8px;width:100%;font-family:"Noto Serif TC",serif;font-size:14px;border:1px solid var(--line);border-radius:5px;padding:8px 10px;background:#FBF8F1;resize:vertical;}
+
+  /* ===== 贊助商與斗內 ===== */
+  .sd-tabs{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:6px 0 16px;}
+  .sd-tab{background:#fff;border:1.5px solid var(--gold);color:var(--wine-deep);border-radius:8px;padding:12px 4px;font-family:"Noto Serif TC",serif;font-size:clamp(13px,3.6vw,15px);white-space:nowrap;font-weight:700;cursor:pointer;}
+  .sd-tab.on{background:var(--wine-deep);border-color:var(--wine-deep);color:#F3E3C6;}
+  .sd-note{display:block;margin-top:6px;color:var(--ink-soft);font-size:12.5px;}
+  .tier-list{display:flex;flex-direction:column;gap:8px;}
+  .tier{display:block;width:100%;text-align:left;background:#fff;border:1px solid var(--line);border-radius:8px;padding:11px 14px;cursor:pointer;font-family:"Noto Serif TC",serif;color:var(--ink);}
+  .tier.on{border:2px solid var(--wine-deep);background:#FBF6EE;padding:10px 13px;}
+  .tier .t-top{display:flex;align-items:baseline;gap:10px;}
+  .tier .t-amt{font-size:17px;font-weight:700;color:var(--wine-deep);white-space:nowrap;}
+  .tier .t-name{font-size:15px;font-weight:700;}
+  .tier .t-items{margin-top:4px;font-size:13px;line-height:1.7;color:var(--ink-soft);}
+  .tier-detail{margin-top:10px;font-size:13px;color:var(--ink-soft);}
+  .tier-detail summary{cursor:pointer;color:var(--wine);font-weight:600;}
+  .tier-detail ul{margin:8px 0 0 18px;line-height:1.8;}
+  .sd-done{margin-top:14px;text-align:center;color:var(--wine-deep);font-weight:700;line-height:1.8;}
+  .sd-done .bank{font-weight:400;text-align:left;background:#EAE0CC;border:1px dashed #C9B79A;border-radius:6px;padding:12px;margin-top:10px;color:var(--ink);}
 </style>
 <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
 </head>
@@ -1063,11 +1081,78 @@
       </div>
     </div>
 
-    <!-- 贊助商與斗內（內容準備中） -->
+    <!-- 贊助商與斗內 -->
     <div class="signup" id="fifty-sponsor" style="display:none; padding-top:22px;">
       <div class="signup-card">
         <div class="signup-section-title">食藝餐桌・五十而豐｜贊助商與斗內</div>
-        <p class="sv-intro">謝謝你願意支持這張餐桌！品牌贊助方案與斗內回饋正在整理中，即將開放。<br>想先了解，歡迎聯繫 LINE 官方帳號 <a href="https://line.me/R/ti/p/@413vjwfv" target="_blank">@413vjwfv</a> 或來電 0920-090-616。</p>
+        <p class="sv-intro">這張餐桌，是由好朋友們的專長、資源與心意一起完成的。<br>不論是品牌贊助，還是不能到場的你，都歡迎一起讓它更豐盛。</p>
+        <div class="sd-tabs">
+          <button type="button" class="sd-tab" id="sd-tab-sponsor" onclick="showSdTab('sponsor')">食材與相關物品贊助</button>
+          <button type="button" class="sd-tab" id="sd-tab-donate" onclick="showSdTab('donate')">我要斗內</button>
+        </div>
+
+        <!-- 食材與相關物品贊助 -->
+        <div id="sd-sponsor" class="sd-pane" style="display:none;">
+          <div class="consent-intro">
+            歡迎重視生活美學、飲食文化與永續理念的品牌，一起參與這張餐桌。<br>
+            <b>填寫下方資料送出後，系統會自動把「品牌合作與商品贊助企劃書」寄到您填寫的 Email。</b>喵老師也會親自與您聯繫。
+          </div>
+          <div class="field"><label for="sp-company">公司／品牌名稱 *</label><input type="text" id="sp-company"></div>
+          <div class="field"><label for="sp-contact">聯絡人 *</label><input type="text" id="sp-contact"></div>
+          <div class="field"><label for="sp-phone">行動電話 *</label><input type="tel" id="sp-phone" placeholder="09xxxxxxxx"></div>
+          <div class="field"><label for="sp-email">Email *（企劃書會寄到這裡）</label><input type="email" id="sp-email"></div>
+          <div class="field"><label for="sp-plan">有興趣的贊助方案</label>
+            <select id="sp-plan"><option value="">還不確定，先看企劃書</option><option>商品價值 NT$2,000</option><option>商品價值 NT$3,000</option><option>商品價值 NT$4,500</option><option>商品價值 NT$6,000</option><option>商品價值 NT$9,000</option></select></div>
+          <div class="field"><label for="sp-note">想提供的商品或想說的話</label><textarea id="sp-note" rows="2" placeholder="可不填"></textarea></div>
+          <button type="button" class="signup-btn" id="sp-submit" onclick="submitSponsorLead()">送出，寄企劃書給我</button>
+          <div id="sp-done" class="sd-done" style="display:none;"></div>
+        </div>
+
+        <!-- 我要斗內 -->
+        <div id="sd-donate" class="sd-pane" style="display:none;">
+          <div class="consent-intro">
+            不能到場，也能一起舉杯。斗內的你，會收到依金額準備的回饋禮，並加入 iDream 會員，<b>每 1 元累積 0.5 點貓幣</b>（確認匯款後發放）。<br>
+            <span class="sd-note">🐾 每一份回饋都附喵老師親筆感謝卡，以保冷袋包裝，活動後以 7-11 或全家店到店寄出。</span>
+          </div>
+          <div class="sv-q" style="margin:4px 0 8px;">選擇斗內方案 *</div>
+          <div class="tier-list" id="tier-list"></div>
+          <details class="tier-detail">
+            <summary>看內容明細</summary>
+            <ul>
+              <li><b>暖心雞湯組</b>：濃厚雞白湯 300g ×2、法式吐司 ×1</li>
+              <li><b>咖哩雙湯組</b>｜日式經典遇上老火慢淬雞湯：濃厚雞白湯 300g、金華火腿老母雞湯 300g、日式經典濃咖哩醬（含雞肉泥）×2、法式吐司 ×1</li>
+              <li><b>咖哩三湯和牛組</b>：濃厚雞白湯 300g、金華火腿老母雞湯 300g、思慕雞湯 300g、日式經典濃咖哩醬（含雞肉泥）×2、法式吐司 ×1、澳洲和牛火鍋肉片 ×1</li>
+              <li><b>WAGA 經典餐碗組（3 件）</b>：大盤、小盤、餐碗</li>
+              <li><b>WAGA 一人份餐桌組（7 件）</b>：大盤、小盤、餐碗、筷、匙、叉、杯</li>
+              <li><b>WAGA 雙人份餐桌組（14 件）</b>：上面 7 件各 2</li>
+              <li><b>花蓮舞鶴有機茶組</b>：2 款茶各 10 包</li>
+            </ul>
+          </details>
+          <div class="field" style="margin-top:12px;"><label for="dn-amount">斗內金額 *（可自訂，最低 $2,000）</label><input type="number" id="dn-amount" min="2000" step="100" inputmode="numeric" oninput="syncTierFromAmount()"></div>
+          <div class="fifty-total" id="dn-summary">請選擇方案或輸入金額</div>
+
+          <div class="signup-section-title" style="margin-top:20px;">斗內人資料</div>
+          <div class="field"><label for="dn-name">姓名 *</label><input type="text" id="dn-name"></div>
+          <div class="field"><label for="dn-phone">手機 *（貓幣存入此號碼的會員資料）</label><input type="tel" id="dn-phone" placeholder="09xxxxxxxx"></div>
+          <div class="field"><label for="dn-email">Email *</label><input type="email" id="dn-email"></div>
+
+          <div class="signup-section-title" style="margin-top:20px;">回饋禮寄送（店到店）</div>
+          <div class="field"><label>取貨方式 *</label>
+            <div class="radio-group">
+              <label><input type="radio" name="dn-pickup" value="7-11"> 7-11</label>
+              <label><input type="radio" name="dn-pickup" value="全家"> 全家</label>
+            </div></div>
+          <div class="field"><label for="dn-store">取貨門市名稱（＋店號） *</label><input type="text" id="dn-store" placeholder="例：松德門市 123456"></div>
+          <label class="agree-line"><input type="checkbox" id="dn-same" checked onchange="document.getElementById('dn-recv-box').style.display=this.checked?'none':'block'"> 收件人同斗內人</label>
+          <div id="dn-recv-box" style="display:none;">
+            <div class="field"><label for="dn-recv">收件人姓名 *</label><input type="text" id="dn-recv"></div>
+            <div class="field"><label for="dn-recv-phone">收件人手機 *</label><input type="tel" id="dn-recv-phone"></div>
+          </div>
+          <div class="field" style="margin-top:10px;"><label for="dn-note">想對喵老師說的話</label><textarea id="dn-note" rows="2" placeholder="可不填"></textarea></div>
+          <label class="agree-line"><input type="checkbox" id="dn-privacy"> 我同意好放心飲食行銷有限公司使用以上資料，用於斗內聯繫、回饋寄送與會員貓幣累積 *</label>
+          <button type="button" class="signup-btn" id="dn-submit" onclick="submitDonation()">確認斗內</button>
+          <div id="dn-done" class="sd-done" style="display:none;"></div>
+        </div>
       </div>
     </div>
 
@@ -2029,14 +2114,6 @@
     Object.keys(old).forEach(function (id) { const t = document.getElementById(id); if (t) t.value = old[id]; });
   }
 
-  function openFiftySponsor() {
-    document.getElementById('fifty-signup').style.display = 'none';
-    document.getElementById('fifty-survey').style.display = 'none';
-    const box = document.getElementById('fifty-sponsor');
-    box.style.display = 'block';
-    box.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }
-
   function openFiftySurvey(session) {
     document.getElementById('fifty-sponsor').style.display = 'none';
     document.getElementById('fifty-signup').style.display = 'none';
@@ -2112,6 +2189,122 @@
     if (q !== null || location.hash === '#survey') {
       togglePanel('fifty', true);
       openFiftySurvey(q === '1207' || q === '1219' ? q : '');
+    }
+  });
+</script>
+<script>
+  // ══ 贊助商與斗內 ══
+  const DONATE_TIERS_FE = [
+    { min: 2000, name: '一份心意・感謝禮', items: ['🍲 暖心雞湯組'] },
+    { min: 3000, name: '二味手作・食光禮', items: ['🍲 咖哩雙湯組'] },
+    { min: 4500, name: '三味豐收・餐桌禮', items: ['🍽 WAGA 經典餐碗組（3 件）', '🍲 咖哩三湯和牛組'] },
+    { min: 6000, name: '四方好友・典藏禮', items: ['🍽 WAGA 一人份餐桌組（7 件）', '🍲 咖哩三湯和牛組'] },
+    { min: 9000, name: '五十而豐・圓滿禮', items: ['🍽 WAGA 雙人份餐桌組（14 件）', '🍵 花蓮舞鶴有機茶組', '🍲 咖哩三湯和牛組'] },
+  ];
+  function showSdTab(k) {
+    ['sponsor', 'donate'].forEach(function (x) {
+      document.getElementById('sd-' + x).style.display = x === k ? 'block' : 'none';
+      document.getElementById('sd-tab-' + x).classList.toggle('on', x === k);
+    });
+  }
+  function tierFor(amount) {
+    let hit = null;
+    DONATE_TIERS_FE.forEach(function (t) { if (amount >= t.min) hit = t; });
+    return hit;
+  }
+  function renderTiers() {
+    const box = document.getElementById('tier-list');
+    box.innerHTML = DONATE_TIERS_FE.map(function (t, i) {
+      return '<button type="button" class="tier" data-i="' + i + '" onclick="pickTier(' + i + ')">' +
+        '<div class="t-top"><span class="t-amt">$' + t.min.toLocaleString() + (i === DONATE_TIERS_FE.length - 1 ? ' 以上' : '') + '</span>' +
+        '<span class="t-name">' + t.name + '</span></div><div class="t-items">' + t.items.join('<br>') + '</div></button>';
+    }).join('');
+  }
+  function pickTier(i) {
+    document.getElementById('dn-amount').value = DONATE_TIERS_FE[i].min;
+    syncTierFromAmount();
+  }
+  function syncTierFromAmount() {
+    const amount = Math.floor(Number(document.getElementById('dn-amount').value) || 0);
+    const t = tierFor(amount);
+    document.querySelectorAll('#tier-list .tier').forEach(function (b) {
+      b.classList.toggle('on', t && DONATE_TIERS_FE[Number(b.dataset.i)] === t);
+    });
+    document.getElementById('dn-summary').innerHTML = t
+      ? '斗內 <b>$' + amount.toLocaleString() + '</b>｜回饋：' + t.name + '<br>確認匯款後送 <b>' + Math.floor(amount * 0.5).toLocaleString() + '</b> 點貓幣'
+      : (amount ? '斗內金額最低 $2,000' : '請選擇方案或輸入金額');
+  }
+  function openFiftySponsor() {
+    document.getElementById('fifty-signup').style.display = 'none';
+    document.getElementById('fifty-survey').style.display = 'none';
+    const box = document.getElementById('fifty-sponsor');
+    box.style.display = 'block';
+    box.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+  function lineInfo() {
+    return {
+      lineId: (typeof lineUserId !== 'undefined' ? lineUserId : '') || '',
+      displayName: (typeof lineDisplayName !== 'undefined' ? lineDisplayName : '') || '',
+    };
+  }
+  function postFifty(payload) {
+    return fetch(FIFTY_WEBAPP_URL, { method: 'POST', body: JSON.stringify(payload) }).then(function (r) { return r.json(); });
+  }
+  function submitSponsorLead() {
+    const v = function (id) { return document.getElementById(id).value.trim(); };
+    const phone = v('sp-phone').replace(/[-\s]/g, '');
+    if (!v('sp-company')) return alert('請填寫公司／品牌名稱');
+    if (!v('sp-contact')) return alert('請填寫聯絡人');
+    if (!/^09\d{8}$/.test(phone)) return alert('請填寫正確的行動電話');
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v('sp-email'))) return alert('請填寫正確的 Email，企劃書會寄到這裡');
+    const btn = document.getElementById('sp-submit'); btn.disabled = true; btn.innerText = '送出中…';
+    postFifty({ action: 'fiftySponsorLead', company: v('sp-company'), contact: v('sp-contact'), phone: phone,
+      email: v('sp-email'), plan: v('sp-plan'), note: v('sp-note') })
+      .then(function (res) {
+        if (res.status !== 'success') throw new Error(res.message);
+        btn.style.display = 'none';
+        const d = document.getElementById('sp-done'); d.style.display = 'block';
+        d.innerHTML = '🌿 謝謝您！' + (res.sent ? '企劃書已寄到 ' + v('sp-email') + '，請查收（沒看到請看垃圾郵件匣）。' : '我們已收到資料，企劃書會盡快寄到 ' + v('sp-email') + '。') + '<br>喵老師會再與您聯繫。';
+      })
+      .catch(function () { alert('送出時發生問題，請稍後再試，或透過 LINE @413vjwfv 聯繫我們。'); btn.disabled = false; btn.innerText = '送出，寄企劃書給我'; });
+  }
+  function submitDonation() {
+    const v = function (id) { return document.getElementById(id).value.trim(); };
+    const amount = Math.floor(Number(v('dn-amount')) || 0);
+    const t = tierFor(amount);
+    const phone = v('dn-phone').replace(/[-\s]/g, '');
+    const pickup = (document.querySelector('input[name="dn-pickup"]:checked') || {}).value;
+    const same = document.getElementById('dn-same').checked;
+    if (!t) return alert('請選擇斗內方案，或輸入 $2,000 以上的金額');
+    if (!v('dn-name')) return alert('請填寫姓名');
+    if (!/^09\d{8}$/.test(phone)) return alert('請填寫正確的手機號碼');
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v('dn-email'))) return alert('請填寫正確的 Email');
+    if (!pickup) return alert('請選擇 7-11 或全家');
+    if (!v('dn-store')) return alert('請填寫取貨門市');
+    if (!same && (!v('dn-recv') || !/^09\d{8}$/.test(v('dn-recv-phone').replace(/[-\s]/g, '')))) return alert('請填寫收件人姓名與手機');
+    if (!document.getElementById('dn-privacy').checked) return alert('請勾選同意個人資料使用');
+    if (!confirm('確認斗內 $' + amount.toLocaleString() + '（' + t.name + '）？')) return;
+    const btn = document.getElementById('dn-submit'); btn.disabled = true; btn.innerText = '送出中…';
+    const li = lineInfo();
+    postFifty({ action: 'fiftyDonate', amount: amount, name: v('dn-name'), phone: phone, email: v('dn-email'),
+      pickup: pickup, store: v('dn-store'), receiver: same ? '' : v('dn-recv'),
+      receiverPhone: same ? '' : v('dn-recv-phone').replace(/[-\s]/g, ''), note: v('dn-note'),
+      lineId: li.lineId, displayName: li.displayName })
+      .then(function (res) {
+        if (res.status !== 'success') throw new Error(res.message);
+        btn.style.display = 'none';
+        const d = document.getElementById('dn-done'); d.style.display = 'block';
+        d.innerHTML = '🥂 謝謝你的斗內！確認信已寄到你的 Email。' +
+          '<div class="bank"><b>【匯款資訊】</b><br>銀行：008 華南銀行 永和分行<br>戶名：好放心飲食行銷有限公司<br>帳號：164101300006<br>金額：$' + amount.toLocaleString() +
+          '<br>匯款後請到 LINE 官方帳號 @413vjwfv 告知姓名與帳號末四碼。確認後送你 ' + res.points.toLocaleString() + ' 點貓幣。</div>' +
+          '<a class="signup-btn" style="display:block;text-decoration:none;margin-top:10px;" href="https://line.me/R/ti/p/@413vjwfv" target="_blank">💬 開啟 LINE 官方帳號</a>';
+      })
+      .catch(function (err) { alert('送出時發生問題：' + (err.message || '請稍後再試') ); btn.disabled = false; btn.innerText = '確認斗內'; });
+  }
+  document.addEventListener('DOMContentLoaded', function () {
+    renderTiers();
+    if (location.hash === '#sponsor' || location.hash === '#donate') {
+      openFiftySponsor(); showSdTab(location.hash === '#donate' ? 'donate' : 'sponsor');
     }
   });
 </script>
