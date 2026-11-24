@@ -667,11 +667,11 @@
   .tier:active{transform:scale(0.985);}
   .tier::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:linear-gradient(#E9CF97,#B8935A);}
   .tier::after{content:"";position:absolute;inset:3px;border:1px solid rgba(233,207,151,0.28);border-radius:8px;pointer-events:none;}
-  .tier .t-main{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px;white-space:nowrap;position:relative;z-index:1;}
+  .tier .t-main{flex:1;min-width:0;overflow:hidden;display:flex;flex-direction:column;gap:2px;white-space:nowrap;position:relative;z-index:1;}
   .tier .t-crown{font-size:14px;margin-right:4px;}
   .tier .t-amt{font-size:17px;font-weight:700;color:#E9CF97;letter-spacing:0.04em;}
   .tier .t-name{font-size:14px;font-weight:600;color:#F6EDE0;letter-spacing:0.06em;}
-  .tier .t-more{flex:0 0 auto;font-size:10.5px;color:#F6EDE0;border:1px solid rgba(246,237,224,0.55);border-radius:999px;padding:2px 8px;position:relative;z-index:1;letter-spacing:0.04em;opacity:0.9;}
+  .tier .t-more{flex:0 0 auto;align-self:center;font-size:10px;line-height:1.4;white-space:nowrap;color:#F6EDE0;border:1px solid rgba(246,237,224,0.5);border-radius:999px;padding:1px 7px;position:relative;z-index:1;letter-spacing:0.04em;opacity:0.9;}
   .tier-0{--tbg:linear-gradient(110deg,#5B3A4A,#4A2E3C);}
   .tier-1{--tbg:linear-gradient(110deg,#2F4A3A,#253D30);}
   .tier-2{--tbg:linear-gradient(110deg,#6B2E3A,#58242F);}
@@ -2254,7 +2254,7 @@
         '<span class="t-main"><span class="t-amt">' + (TIER_DECO[i] === '👑' ? '<span class="t-crown">👑</span>' : '') +
         '$' + t.min.toLocaleString() + (top ? ' 以上' : '') + '</span>' +
         '<span class="t-name">' + t.name + '</span></span>' +
-        '<span class="t-more">點選看內容物 ›</span></button>';
+        '<span class="t-more">點看 ›</span></button>';
     }).join('');
   }
   function showTierGift(i) {
