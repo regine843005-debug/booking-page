@@ -659,15 +659,14 @@
   .sd-tab.on{background:var(--wine-deep);border-color:var(--wine-deep);color:#F3E3C6;}
   .sd-note{display:block;margin-top:6px;color:var(--ink-soft);font-size:12.5px;}
   .tier-list{display:flex;flex-direction:column;gap:8px;}
-  .tier{display:flex;align-items:stretch;background:#fff;border:1px solid var(--line);border-radius:8px;overflow:hidden;}
-  .tier.on{border:2px solid var(--wine-deep);background:#FBF6EE;}
-  .tier .t-info{flex:1;min-width:0;display:flex;flex-direction:column;align-items:flex-start;gap:2px;background:transparent;border:none;text-align:left;padding:10px 12px;cursor:pointer;font-family:"Noto Serif TC",serif;color:var(--ink);}
-  .tier .t-amt{font-size:17px;font-weight:700;color:var(--wine-deep);}
-  .tier .t-name{font-size:15px;font-weight:700;}
-  .tier .t-items{font-size:12.5px;color:var(--ink-soft);line-height:1.5;}
-  .tier .t-more{font-size:12px;color:var(--gold);font-weight:600;margin-top:2px;}
-  .tier .t-pick{flex:0 0 86px;border:none;border-left:1px solid var(--line);background:var(--wine-deep);color:#F3E3C6;font-family:"Noto Serif TC",serif;font-size:13.5px;font-weight:700;line-height:1.4;cursor:pointer;}
-  .tier.on .t-pick{background:var(--gold);color:#fff;}
+  .tier{display:flex;align-items:center;gap:8px;width:100%;background:#fff;border:1px solid var(--line);border-radius:8px;padding:8px 12px;cursor:pointer;text-align:left;font-family:"Noto Serif TC",serif;color:var(--ink);}
+  .tier.on{border:2px solid var(--wine-deep);background:#FBF6EE;padding:7px 11px;}
+  .tier .t-main{flex:1;min-width:0;display:flex;flex-direction:column;gap:1px;}
+  .tier .t-line{display:flex;align-items:baseline;gap:8px;white-space:nowrap;}
+  .tier .t-amt{font-size:16px;font-weight:700;color:var(--wine-deep);}
+  .tier .t-name{font-size:14.5px;font-weight:700;overflow:hidden;text-overflow:ellipsis;}
+  .tier .t-items{font-size:12px;color:var(--ink-soft);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .tier .t-more{flex:0 0 auto;font-size:12px;color:var(--gold);font-weight:600;}
   .gift-item{padding:10px 0;border-bottom:1px solid #E6DAC4;font-size:14px;line-height:1.7;}
   .gift-item:last-child{border-bottom:none;}
   .gift-item span{color:var(--ink-soft);font-size:13.5px;}
@@ -2214,13 +2213,11 @@
   function renderTiers() {
     const box = document.getElementById('tier-list');
     box.innerHTML = DONATE_TIERS_FE.map(function (t, i) {
-      return '<div class="tier" data-i="' + i + '">' +
-        '<button type="button" class="t-info" onclick="showTierGift(' + i + ')">' +
-        '<span class="t-amt">$' + t.min.toLocaleString() + (i === DONATE_TIERS_FE.length - 1 ? ' 以上' : '') + '</span>' +
-        '<span class="t-name">' + t.name + '</span>' +
-        '<span class="t-items">' + t.short + '</span>' +
-        '<span class="t-more">點選看內容物 ›</span></button>' +
-        '<button type="button" class="t-pick" onclick="pickTier(' + i + ')">我要<br>這個方案</button></div>';
+      return '<button type="button" class="tier" data-i="' + i + '" onclick="showTierGift(' + i + ')">' +
+        '<span class="t-main"><span class="t-line"><span class="t-amt">$' + t.min.toLocaleString() + (i === DONATE_TIERS_FE.length - 1 ? '+' : '') + '</span>' +
+        '<span class="t-name">' + t.name + '</span></span>' +
+        '<span class="t-items">' + t.short + '</span></span>' +
+        '<span class="t-more">內容物 ›</span></button>';
     }).join('');
   }
   function showTierGift(i) {
