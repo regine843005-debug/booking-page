@@ -703,12 +703,9 @@
 <body>
 <div class="wrap">
 
-  <!-- 頂部導覽列：活動內容 / 購物車 / 查詢會員點數 -->
+  <!-- 頂部導覽列：購物車 / 查詢會員點數 -->
   <nav class="top-nav">
     <div class="nav-menu">
-      <a href="#event-details" class="nav-item">
-        <span>📖</span> 活動內容
-      </a>
       <a href="#signup-form" class="nav-item">
         <span>🛒</span> 購物車 <span class="cart-badge" id="nav-cart-count">1</span>
       </a>
@@ -1076,7 +1073,7 @@
       <div class="sq-item">
         <button type="button" class="sq-card" onclick="openFiftyDetail('1207')" aria-label="12月7日 人生回顧暨感恩餐會">
           <img src="fifty/card-1207.jpg" alt="12/7 人生回顧暨感恩餐會">
-          <span class="sq-coin">300 貓幣</span>
+          <span class="sq-coin">500 貓幣</span>
           <span class="sq-hint">點選看活動詳情</span>
         </button>
         <div class="sq-cap"><b>12/7</b><br>食藝餐桌・感恩餐會</div>
@@ -1084,7 +1081,7 @@
       <div class="sq-item">
         <button type="button" class="sq-card" onclick="openFiftyDetail('1219')" aria-label="12月19日 50歲生日歡慶派對">
           <img src="fifty/card-1219.jpg" alt="12/19 50歲生日歡慶派對">
-          <span class="sq-coin">300 貓幣</span>
+          <span class="sq-coin">500 貓幣</span>
           <span class="sq-hint">點選看活動詳情</span>
         </button>
         <div class="sq-cap"><b>12/19</b><br>食藝餐桌・生日派對</div>
@@ -1100,7 +1097,7 @@
       <div class="sq-item">
         <button type="button" class="sq-card" onclick="openFiftySurvey()" aria-label="參加者滿意度調查">
           <img src="fifty/card-survey-sq.jpg" alt="">
-          <span class="sq-coin">80 貓幣</span>
+          <span class="sq-coin">100 貓幣</span>
           <span class="sq-title-over">參加者<br>滿意度調查</span>
           <span class="sq-hint">點選開始填寫</span>
         </button>
@@ -1184,7 +1181,7 @@
     <div class="signup" id="fifty-survey" style="display:none; padding-top:22px;">
       <div class="signup-card">
         <div class="signup-section-title">食藝餐桌・五十而豐｜參加者滿意度調查</div>
-        <p class="sv-intro">謝謝你來到這張餐桌！花 2 分鐘留下你的感受，送出後送你 <b>80 點貓幣</b>。<br><span class="sv-muted">評分為必填（2～5 顆星），文字題可自由填寫。</span></p>
+        <p class="sv-intro">謝謝你來到這張餐桌！花 2 分鐘留下你的感受，送出後送你 <b>100 點貓幣</b>。<br><span class="sv-muted">評分為必填（2～5 顆星），文字題可自由填寫。</span></p>
 
         <div class="sv-block">
           <div class="sv-q">1. 參加場次 *</div>
@@ -1193,7 +1190,7 @@
             <label class="session-opt"><input type="radio" name="sv-session" value="1219" onchange="renderSurveyDishes()"><span><b>12/19（六）</b>50 歲生日歡慶派對</span></label>
           </div>
           <div class="field" style="margin-top:12px;"><label for="sv-name">姓名 *</label><input type="text" id="sv-name"></div>
-          <div class="field" style="margin-bottom:0;"><label for="sv-phone">手機 *（請填報名時的號碼，80 點貓幣會存入此號碼的會員資料）</label><input type="tel" id="sv-phone" placeholder="09xxxxxxxx"></div>
+          <div class="field" style="margin-bottom:0;"><label for="sv-phone">手機 *（請填報名時的號碼，100 點貓幣會存入此號碼的會員資料）</label><input type="tel" id="sv-phone" placeholder="09xxxxxxxx"></div>
         </div>
 
         <div class="sv-section">今晚的五道菜</div>
@@ -1228,7 +1225,7 @@
           </div>
         </div>
 
-        <button type="button" class="signup-btn" id="sv-submit" onclick="submitFiftySurvey()">送出問卷，領 80 點貓幣</button>
+        <button type="button" class="signup-btn" id="sv-submit" onclick="submitFiftySurvey()">送出問卷，領 100 點貓幣</button>
         <div id="sv-done" style="display:none; margin-top:14px; text-align:center; color:var(--wine-deep); font-weight:700; line-height:1.8;"></div>
       </div>
     </div>
@@ -1350,7 +1347,7 @@
           <div class="info-sec">
             <div class="info-h">活動費用</div>
             <p>以 20 人計，均攤活動費用約 <span class="info-price">$2,350／人</span></p>
-            <p>🐾 完成匯款後，每人可得 <b>300 點貓幣</b>（活動後填滿意度調查再送 80 點）</p>
+            <p>🐾 完成匯款後，每人可得 <b>500 點貓幣</b>（活動後填滿意度調查再送 100 點）</p>
             <p>其中包含<b>花藝禮籃課程 $950</b>，可帶回一份精美作品，課程費不另計。</p>
             <p class="info-gold">把餐桌上的美好，化成一份可以帶回家的心意。</p>
           </div>
@@ -1395,7 +1392,7 @@
           <div class="info-sec">
             <div class="info-h">活動費用</div>
             <p>以 22 人計，均攤活動費用約 <span class="info-price">$2,950／人</span></p>
-            <p>🐾 完成匯款後，每人可得 <b>300 點貓幣</b>（活動後填滿意度調查再送 80 點）</p>
+            <p>🐾 完成匯款後，每人可得 <b>500 點貓幣</b>（活動後填滿意度調查再送 100 點）</p>
             <p>其中包含<b>花藝禮籃課程 $950</b>，可帶回一份精美作品，課程費不另計。</p>
             <p class="info-gold">不一定要帶禮物來，但可以帶禮物回去！</p>
           </div>
@@ -1456,7 +1453,7 @@
       <div class="policy-box">
         • 活動費用為依人數<b>均攤的約略金額</b>。<br>
         • 請先按下方「確認送出報名」，再匯款，匯款後請在 LINE 官方帳號（@413vjwfv）告知姓名與帳號末四碼。<br>
-        • 確認收到匯款後，每位參加者每場可得 <b>300 點貓幣</b>，依各自填寫的手機號碼存入會員資料。
+        • 確認收到匯款後，每位參加者每場可得 <b>500 點貓幣</b>，依各自填寫的手機號碼存入會員資料。
       </div>
       <div class="policy-box">
         <b>【取消與退費說明】</b><br>
@@ -1889,7 +1886,7 @@
     '1207': { label: '12/7（一）18:00–20:45 人生回顧暨感恩餐會', price: 2350 },
     '1219': { label: '12/19（六）18:20–21:45 50歲生日歡慶派對', price: 2950 },
   };
-  const FIFTY_POINTS_PER_SESSION = 300;
+  const FIFTY_POINTS_PER_SESSION = 500;
 
   function closeModal(id) { document.getElementById(id).classList.remove('active'); }
 
@@ -2085,7 +2082,7 @@
 </script>
 <script>
   // ══════════════════════════════════════
-  //  五十而豐｜參加者滿意度調查（填寫送 80 貓幣）
+  //  五十而豐｜參加者滿意度調查（填寫送 100 貓幣）
   //  菜名之後拿到菜單再填進 FIFTY_DISHES
   // ══════════════════════════════════════
   const FIFTY_DISHES = {
@@ -2193,7 +2190,7 @@
       .catch(function (err) {
         console.error(err);
         alert('送出時發生問題，請稍後再試，或透過 LINE 官方帳號 @413vjwfv 告訴我們。');
-        btn.disabled = false; btn.innerText = '送出問卷，領 80 點貓幣';
+        btn.disabled = false; btn.innerText = '送出問卷，領 100 點貓幣';
       });
   }
 
