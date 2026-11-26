@@ -1221,7 +1221,7 @@
         <div class="field"><label for="sv-wish"><span class="sv-num">19.</span> 未來敲碗的課程</label><textarea id="sv-wish" rows="2" placeholder="想上什麼課、想參加什麼樣的餐桌，都可以敲碗！"></textarea></div>
 
         <div class="sv-block">
-          <div class="sv-q">20. 喵老師正在籌組「惜食永續發展協會」，想聽聽你的意願：</div>
+          <div class="sv-q">20. 喵老師正在籌組「惜食永續發展協會」，想聽聽你的意願： *</div>
           <div class="radio-group" style="flex-direction:column; gap:8px;">
             <label><input type="radio" name="sv-assoc" value="願意加入付費會員"> 願意加入付費會員</label>
             <label><input type="radio" name="sv-assoc" value="願意擔任榮譽會員"> 願意擔任榮譽會員</label>
@@ -2171,6 +2171,7 @@
       return;
     }
     const auth = (document.querySelector('input[name="sv-auth"]:checked') || {}).value;
+    if (!document.querySelector('input[name="sv-assoc"]:checked')) { alert('請選擇第 20 題：惜食永續發展協會意願'); return; }
     if (!auth) { alert('請選擇第 21 題：是否同意使用你的回饋'); return; }
 
     const v = function (id) { return document.getElementById(id).value.trim(); };
