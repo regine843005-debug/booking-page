@@ -1367,6 +1367,8 @@
           <div class="info-sec">
             <div class="info-h">活動費用</div>
             <p>以 20 人計，均攤活動費用約 <span class="info-price">$2,350／人</span></p>
+            <p><b class="fifty-accent">早鳥優惠</b>｜12月7日前一人報名兩場（12/7＋12/19，分兩次報名也算），兩場都享 <b class="fifty-accent">9折</b>（兩人同行優惠僅適用 12/19 場）。<span class="info-muted">若之後取消其中一場，就不再享 9 折。</span></p>
+            <p><b class="fifty-accent">貓幣折抵</b>｜iDream廚房會員可用 <b class="fifty-accent">1000貓幣</b> 折抵 <b class="fifty-accent">$100</b>，每筆報名最多折抵 <b class="fifty-accent">$200</b>，可與早鳥優惠併用（使用之前累積的貓幣，確認金額時可選擇折抵 $100、$200 或不折抵）。</p>
             <p>🐾 完成匯款後，每人可得 <b>500 點貓幣</b>（活動後填滿意度調查再送 100 點）</p>
             <p>其中包含<b>花藝禮籃課程 $950</b>，可帶回一份精美作品，課程費不另計。</p>
             <p class="info-gold">把餐桌上的美好，化成一份可以帶回家的心意。</p>
@@ -1412,7 +1414,7 @@
           <div class="info-sec">
             <div class="info-h">活動費用</div>
             <p>以 22 人計，均攤活動費用約 <span class="info-price">$2,950／人</span></p>
-            <p><b class="fifty-accent">早鳥優惠</b>｜12月7日前報名，2人同行享 <b class="fifty-accent">9折</b>；一人報名2場（分兩次報名也算），同樣享 <b class="fifty-accent">9折</b>。<span class="info-muted">若之後取消其中一場，或同行者有人退費，就不再享 9 折。</span></p>
+            <p><b class="fifty-accent">早鳥優惠</b>｜12月7日前報名，12/19 場 2人同行享 <b class="fifty-accent">9折</b>；一人報名2場（分兩次報名也算），同樣享 <b class="fifty-accent">9折</b>。<span class="info-muted">若之後取消其中一場，或同行者有人退費，就不再享 9 折。</span></p>
             <p><b class="fifty-accent">貓幣折抵</b>｜本次餐會開放貓幣折抵，iDream廚房會員可用 <b class="fifty-accent">1000貓幣</b> 折抵 <b class="fifty-accent">$100</b>，每筆報名最多折抵 <b class="fifty-accent">$200</b>，可與早鳥優惠併用（使用之前累積的貓幣，確認金額時可選擇折抵 $100、$200 或不折抵）。</p>
             <p>🐾 完成匯款後，每人可得 <b>500 點貓幣</b>（活動後填滿意度調查再送 100 點）</p>
             <p>其中包含<b>花藝禮籃課程 $950</b>，可帶回一份精美作品，課程費不另計。</p>
@@ -1985,7 +1987,7 @@
     return Array.from(document.querySelectorAll('input[name="fifty-session"]:checked')).map(function (b) { return b.value; });
   }
 
-  // 早鳥：12/7 00:00（台北時間）前報名，且「2 人以上同行」或「一人報 2 場（含分兩次報名）」→ 9 折
+  // 早鳥：12/7 00:00（台北時間）前報名，「一人報 2 場（含分兩次報名）」→ 9 折；「2 人以上同行」只限 12/19
   // 貓幣：用之前累積的貓幣，1000 點折 $100，每筆最多 $200，可併用；按「前往確認金額」時由後台試算
   const FIFTY_EARLY_DEADLINE = new Date('2026-12-07T00:00:00+08:00').getTime();
   let fiftyQuote = null;   // 後台試算結果
@@ -1995,7 +1997,7 @@
     const count = Number(document.getElementById('fifty-count').value);
     const perPerson = sessions.reduce(function (s, k) { return s + FIFTY_SESSIONS[k].price; }, 0);
     const subtotal = perPerson * count;
-    const localEarly = sessions.length > 0 && Date.now() < FIFTY_EARLY_DEADLINE && (count >= 2 || sessions.length >= 2);
+    const localEarly = sessions.length > 0 && Date.now() < FIFTY_EARLY_DEADLINE && (sessions.length >= 2 || (count >= 2 && sessions[0] === '1219'));
     const q = fiftyQuote;
     const early = q ? q.early : localEarly;
     const earlyDiscount = q ? q.earlyDiscount : (localEarly ? subtotal - Math.round(subtotal * 0.9) : 0);
@@ -2017,7 +2019,7 @@
     const c = calcFifty();
     const box = document.getElementById('fifty-total-box');
     if (!c.sessions.length) { box.innerHTML = '請先勾選報名場次'; return; }
-    const hint = (!c.early && Date.now() < FIFTY_EARLY_DEADLINE) ? '<br><span style="font-size:13px;color:#B24A2E;">2 人同行或一人報 2 場（分兩次報名也算），12/7 前報名享 9 折</span>' : '';
+    const hint = (!c.early && Date.now() < FIFTY_EARLY_DEADLINE) ? '<br><span style="font-size:13px;color:#B24A2E;">12/7 前報名：一人報 2 場（分兩次報名也算）享 9 折；12/19 兩人同行也享 9 折</span>' : '';
     box.innerHTML = c.sessions.length + ' 場 × ' + c.count + ' 位<br>' + fiftyPriceLines(c) +
       '<br>預估金額 <b>$' + c.total.toLocaleString() + '</b>' + hint +
       '<br><span style="font-size:13px;">貓幣折抵可在下一步「確認金額」時選擇</span><br>' +
